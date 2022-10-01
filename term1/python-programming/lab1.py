@@ -49,6 +49,23 @@
 # print(kilograms, "kg is", kilograms * 2.204, "pounds")
 
 # task11
-bigNumber = int(input("Enter number over 100: "))
-smallNumber = int(input("Enter number over 100: "))
-print(smallNumber, "can fit", bigNumber//smallNumber, "times in", bigNumber)
+# bigNumber = int(input("Enter number over 100: "))
+# smallNumber = int(input("Enter number over 100: "))
+# print(smallNumber, "can fit", bigNumber//smallNumber, "times in", bigNumber)
+
+# task12
+# num1 = int(input("Tell me 1st number: "))
+# num2 = int(input("Tell me 2nd number: "))
+# print(num2, num1) if num1 > num2 else print(num1, num2)
+
+# task13
+# num = int(input("Tell me a number under 20: "))
+# print("Thank you") if num < 20 else print("Too high")
+
+# task14
+# num = int(input("Tell me a number between 10 and 20: "))
+# print("Thank you") if 10 <= num <= 20 else print("Incorrect answer")
+
+# task15
+color = input("Tell me your favorite color: ")
+print("I like red too") if color.lower() == "red" else print("I don't like %s, I prefer red" % color)
