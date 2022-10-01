@@ -99,12 +99,28 @@
 #     print("Too high")
 
 # task19
-num = int(input("Enter 1, 2 or 3: "))
-if num == 1:
-    print("Thank you")
-elif num == 2:
-    print("Well done")
-elif num == 3:
-    print("Correct")
-else:
-    print("Error message")
+# num = int(input("Enter 1, 2 or 3: "))
+# if num == 1:
+#     print("Thank you")
+# elif num == 2:
+#     print("Well done")
+# elif num == 3:
+#     print("Correct")
+# else:
+#     print("Error message")
+
+# task20
+# name = input("What's your name?\n")
+# print("Your name length is", len(name))
+
+# task21
+# name = input("What's your name?\n")
+# surname = input("What's your surname?\n")
+# fullname = name + " " + surname
+# print(fullname + ", length is", len(fullname))
+
+# task22
+name = input("What's your name in lowercase?\n")
+surname = input("What's your surname in lowercase?\n")
+fullname = name + " " + surname
+print(fullname.title())
