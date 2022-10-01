@@ -67,5 +67,44 @@
 # print("Thank you") if 10 <= num <= 20 else print("Incorrect answer")
 
 # task15
-color = input("Tell me your favorite color: ")
-print("I like red too") if color.lower() == "red" else print("I don't like %s, I prefer red" % color)
+# color = input("Tell me your favorite color: ")
+# print("I like red too") if color.lower() == "red" else print("I don't like %s, I prefer red" % color)
+
+# task16
+# isRaining = input("Is it raining?\n").lower() == "yes"
+# if not isRaining:
+#     print("Enjoy your day")
+# else:
+#     isWindy = input("Is it windy?\n").lower() == "yes"
+#     print("It is too windy for an umbrella") if isWindy else print("Take an umbrella")
+
+# task17
+# age = int(input("Tell me your age: "))
+# if age >= 18:
+#     print("You can vote")
+# elif age == 17:
+#     print("You can learn to drive")
+# elif age == 16:
+#     print("You can buy a lottery ticket")
+# else:
+#     print("You can go trick-or-treating")
+
+# task18
+# num = int(input("Tell me a number: "))
+# if num < 10:
+#     print("Too low")
+# elif 10 <= num <= 20:
+#     print("Correct")
+# else:
+#     print("Too high")
+
+# task19
+num = int(input("Enter 1, 2 or 3: "))
+if num == 1:
+    print("Thank you")
+elif num == 2:
+    print("Well done")
+elif num == 3:
+    print("Correct")
+else:
+    print("Error message")
