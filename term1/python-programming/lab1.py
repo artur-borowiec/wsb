@@ -120,7 +120,25 @@
 # print(fullname + ", length is", len(fullname))
 
 # task22
-name = input("What's your name in lowercase?\n")
-surname = input("What's your surname in lowercase?\n")
-fullname = name + " " + surname
-print(fullname.title())
+# name = input("What's your name in lowercase?\n")
+# surname = input("What's your surname in lowercase?\n")
+# fullname = name + " " + surname
+# print(fullname.title())
+
+# task23
+# line = input("Enter a line of nursery rhyme\n")
+# start = int(input("Enter start position\n"))
+# end = int(input("Enter end position\n"))
+# print(line[start:end])
+
+# task24
+# word = input("Enter a word\n")
+# print(word.upper())
+
+# task25
+name = input("What's your name?\n")
+if len(name) > 5:
+    print(name.lower())
+else:
+    surname = input("What's your surname?\n")
+    print((name+surname).upper())
