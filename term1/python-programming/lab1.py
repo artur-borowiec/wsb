@@ -159,3 +159,8 @@ print(num * 2)
 # task28
 num = float(input("Tell me a number with lots of decimal places\n"))
 print("%.2f" % (num*2))
+
+# task29
+import math
+num = int(input("Tell me a number over 500\n"))
+print("%.2f" % math.sqrt(num))
