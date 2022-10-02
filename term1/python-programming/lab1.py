@@ -155,3 +155,7 @@ else:
 # task27
 num = float(input("Tell me a number with lots of decimal places\n"))
 print(num * 2)
+
+# task28
+num = float(input("Tell me a number with lots of decimal places\n"))
+print("%.2f" % (num*2))
