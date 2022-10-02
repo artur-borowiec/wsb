@@ -122,7 +122,7 @@
 # task22
 # name = input("What's your name in lowercase?\n")
 # surname = input("What's your surname in lowercase?\n")
-# fullname = name + " " + surname
+# fullname = f"{name} {surname}"
 # print(fullname.title())
 
 # task23
