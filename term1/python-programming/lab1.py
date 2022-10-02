@@ -114,26 +114,26 @@
 # print("Your name length is", len(name))
 
 # task21
-# name = input("What's your name?\n")
-# surname = input("What's your surname?\n")
-# fullname = name + " " + surname
-# print(fullname + ", length is", len(fullname))
+name = input("What's your name?\n")
+surname = input("What's your surname?\n")
+fullname = name + " " + surname
+print(fullname + ", length is", len(fullname))
 
 # task22
-# name = input("What's your name in lowercase?\n")
-# surname = input("What's your surname in lowercase?\n")
-# fullname = f"{name} {surname}"
-# print(fullname.title())
+name = input("What's your name in lowercase?\n")
+surname = input("What's your surname in lowercase?\n")
+fullname = f"{name} {surname}"
+print(fullname.title())
 
 # task23
-# line = input("Enter a line of nursery rhyme\n")
-# start = int(input("Enter start position\n"))
-# end = int(input("Enter end position\n"))
-# print(line[start:end])
+line = input("Enter a line of nursery rhyme\n")
+start = int(input("Enter start position\n"))
+end = int(input("Enter end position\n"))
+print(line[start:end])
 
 # task24
-# word = input("Enter a word\n")
-# print(word.upper())
+word = input("Enter a word\n")
+print(word.upper())
 
 # task25
 name = input("What's your name?\n")
@@ -142,3 +142,12 @@ if len(name) > 5:
 else:
     surname = input("What's your surname?\n")
     print((name+surname).upper())
+
+# task26
+vowels = ['a', 'e', 'i', 'o', 'u']
+word = input("Tell me a word:\n").lower()
+
+if word[0] in vowels:
+  print(f"{word}way")
+else:
+  print(f"{word[1:]}{word[0]}ay")
