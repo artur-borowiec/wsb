@@ -164,3 +164,7 @@ print("%.2f" % (num*2))
 import math
 num = int(input("Tell me a number over 500\n"))
 print("%.2f" % math.sqrt(num))
+
+# task30
+import math
+print("%.5f" % math.pi)
