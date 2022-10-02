@@ -151,3 +151,7 @@ if word[0] in vowels:
   print(f"{word}way")
 else:
   print(f"{word[1:]}{word[0]}ay")
+
+# task27
+num = float(input("Tell me a number with lots of decimal places\n"))
+print(num * 2)
