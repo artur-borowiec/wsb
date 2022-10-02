@@ -168,3 +168,9 @@ print("%.2f" % math.sqrt(num))
 # task30
 import math
 print("%.5f" % math.pi)
+
+# task31
+import math
+radius = float(input("Enter a radius of a circle:\n"))
+area = math.pi * radius**2
+print(area)
