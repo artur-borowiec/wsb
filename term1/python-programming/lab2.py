@@ -25,3 +25,21 @@ else:
     height = float(input("Enter height: "))
     area = base*height / 2
     print(f"Area of triangle is {area}")
+
+# task35
+repeats = 3
+name = input("Tell me your name: ")
+for i in range(0, repeats):
+    print(name)
+
+# task36
+name = input("Tell me your name: ")
+repeats = int(input("Tell me a number: "))
+for i in range(0, repeats):
+    print(name)
+    
+# task37
+name = input("Tell me your name: ")
+for letter in name:
+    print(letter)
+    
