@@ -67,3 +67,11 @@ else:
     for i in range(3):
         print("Too much")
 
+# task42
+total = 0
+for i in range(5):
+    num = int(input("Enter a number: "))
+    answer = input("Include in total (y/N)? ")
+    if answer == "y":
+        total += num
+print(f"Sum is {total}")
