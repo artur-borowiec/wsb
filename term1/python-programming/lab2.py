@@ -114,3 +114,13 @@ num = 0
 while num <= 5:
     num = int(input("Enter a number: "))
 print(f"The last number you entered is: {num}")
+
+# task47
+total = int(input("Enter a number: "))
+choice = "y"
+while choice == "y":
+    num = int(input("Enter a number: "))
+    total += num
+    choice = input("Do you want to enter another number (y/n)? ")
+print(f"Total is {total}")
+
