@@ -75,3 +75,20 @@ for i in range(5):
     if answer == "y":
         total += num
 print(f"Sum is {total}")
+
+# task43
+direction = input("Enter direction (up/down): ")
+if direction == "up":
+    num = int(input("Tell me a number: "))
+    current = 1
+    for i in range(num):
+        print(current)
+        current += 1
+elif direction == "down":
+    num = int(input("Tell me a number below 20: "))
+    current = num
+    for i in range(num):
+        print(current)
+        current -= 1
+else:
+    print("I don't understand")
