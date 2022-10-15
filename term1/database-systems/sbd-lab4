@@ -1,0 +1,45 @@
+-- Zadanie 08 --
+CREATE TABLE Ksiazki(
+    tytul VARCHAR(25) NOT NULL,
+    autor_imie VARCHAR(20) NOT NULL,
+    autor_nazw VARCHAR(20) NOT NULL,
+    cena FLOAT(4,2) NOT NULL,
+    ilosc INT NOT NULL,
+    data_wydania DATE NULL,
+    gatunek VARCHAR(20) NULL,
+    opis VARCHAR(40) NULL
+);
+
+-- Zadanie 09 --
+DESCRIBE Ksiazki;
+
+-- Zadanie 10 --
+SHOW COLUMNS FROM Ksiazki;
+
+-- Zadanie 11 --
+SELECT * FROM Ksiazki;
+
+-- Zadanie 12 --
+INSERT INTO Ksiazki(tytul, autor_imie, autor_nazw, cena, ilosc, data_wydania, gatunek, opis)
+VALUES
+    ('Potop', 'Henryk', 'Sienkiewicz', 39.99, 10, '2001-02-11', 'przygodowa', 'lektura szkolna'),
+    ('Gdzie śpiewają raki', 'Delia', 'Owens', 26.83, 9, '2022-07-13', 'literatura piękna', 'lektura szkolna'),
+    ('Autobiografia', 'Adam', 'Małysz', 39.99, 10, '2001-02-11', 'przygodowa', 'lektura szkolna');
+
+-- Zadanie 13 --
+SELECT COUNT(*) FROM Ksiazki;
+
+-- Zadanie 14 --
+SELECT * FROM Ksiazki;
+
+-- Zadanie 15 --
+SELECT tytul, autor_imie, autor_nazw, opis
+FROM Ksiazki
+WHERE autor_imie IN ('Henryk', 'Jan', 'Adam')
+ORDER BY autor_nazw ORDER BY autor_nazw;
+
+-- Zadanie 16 --
+SELECT SUM(ilosc) FROM Ksiazki;
+
+-- Zadanie 17 --
+SELECT MIN(ilosc), tutyl, autor_imie, autor_nazw FROM Ksiazki;
