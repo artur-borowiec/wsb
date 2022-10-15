@@ -43,3 +43,16 @@ name = input("Tell me your name: ")
 for letter in name:
     print(letter)
     
+# task38
+repeats = int(input("Tell me a number: "))
+name = input("Tell me your name: ")
+for i in range(repeats):
+    for letter in name:
+        print(letter)
+    
+# task40
+number = int(input("Tell me a number below 50:"))
+current = 50
+while number <= current:
+    print(f"{current}")
+    current -= 1
