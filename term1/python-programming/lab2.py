@@ -101,3 +101,11 @@ if people_number < 10:
         print(f"{name} has been invited")
 else:
     print("Too many people")
+
+# task45
+total = 0
+while total <= 50:
+    num = int(input("Enter a number: "))
+    total += num
+    print(f"Total is {total}")
+
