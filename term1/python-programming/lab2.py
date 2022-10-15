@@ -92,3 +92,12 @@ elif direction == "down":
         current -= 1
 else:
     print("I don't understand")
+
+# task44
+people_number = int(input("How many people to invite?: "))
+if people_number < 10:
+    for i in range(people_number):
+        name = input("Name: ")
+        print(f"{name} has been invited")
+else:
+    print("Too many people")
