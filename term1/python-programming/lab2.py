@@ -124,3 +124,11 @@ while choice == "y":
     choice = input("Do you want to enter another number (y/n)? ")
 print(f"Total is {total}")
 
+# task48
+total = 0
+choice = "y"
+while choice == "y":
+    name = input("Enter name: ")
+    total += 1
+    choice = input("Do you want to invite more people (y/n)? ")
+print(f"You invited {total} people")
