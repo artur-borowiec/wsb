@@ -133,6 +133,19 @@ while choice == "y":
     choice = input("Do you want to invite more people (y/n)? ")
 print(f"You invited {total} people")
 
+# task49
+compnum = 50
+attempts = 0
+guess = 0
+while guess != compnum:
+    guess = int(input("Enter a number: "))
+    if guess < compnum:
+        print("Too low")
+    else:
+        print("Too high")
+    attempts += 1
+print(f"Well done, you took {attempts} attempts")
+
 # task50
 num = 0
 while num < 10 or num > 20:
