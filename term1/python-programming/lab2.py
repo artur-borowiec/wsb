@@ -11,3 +11,17 @@ b = int(input("Enter another number:\n"))
 ans1 = a // b
 ans2 = a % b
 print(f"{a} divided by {b} is {ans1} with {ans2} remaining")
+
+# task34
+print("1) Square\n2) Triangle")
+choice = int(input("Enter a number: "))
+if choice > 2:
+    print("Incorrect option")
+elif choice == 1:
+    side = float(input("Enter side length: "))
+    print(f"Area of square is {side**2}")
+else:
+    base = float(input("Enter base length: "))
+    height = float(input("Enter height: "))
+    area = base*height / 2
+    print(f"Area of triangle is {area}")
