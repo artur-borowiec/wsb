@@ -132,3 +132,14 @@ while choice == "y":
     total += 1
     choice = input("Do you want to invite more people (y/n)? ")
 print(f"You invited {total} people")
+
+# task50
+num = 0
+while num < 10 or num > 20:
+    num = int(input("Enter a number: "))
+    if num < 10:
+        print("Too low")
+    elif num > 20:
+        print("Too high")
+print(f"Thank you")
+
