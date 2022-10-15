@@ -56,3 +56,14 @@ current = 50
 while number <= current:
     print(f"{current}")
     current -= 1
+    
+# task41
+name = input("Tell me your name: ")
+repeats = int(input("Tell me a number: "))
+if repeats < 10:
+    for i in range(repeats):
+        print(name)
+else:
+    for i in range(3):
+        print("Too much")
+
