@@ -155,10 +155,18 @@ def task50():
         elif num > 20:
             print("Too high")
     print(f"Thank you")
+
+def task51():
+    bottles = 10
+    while bottles > 0:
+        text = f"{bottles} green bottles on the wall"
+        print(f"There are {text}, {text}")
+        falling = int(input("How many should fall? "))
+        while falling <= 0 or falling > bottles:
+            falling = int(input("No, try again? "))
+        bottles -= falling
+        
+    print("There are no more green bottles hanging on the wall")
     
-def main():
-    print("abc")
-    task50()
-    
-if __name__ == "__main__": main()
+if __name__ == "__main__": task51()
 
