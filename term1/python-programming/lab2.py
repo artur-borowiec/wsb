@@ -167,6 +167,4 @@ def task51():
         bottles -= falling
         
     print("There are no more green bottles hanging on the wall")
-    
-if __name__ == "__main__": task51()
 
