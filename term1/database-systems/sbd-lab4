@@ -1,3 +1,5 @@
+-- https://paiza.io/projects/MsHJEmoGHv_8C90CZCLThQ
+
 -- Zadanie 08 --
 CREATE TABLE Ksiazki(
     tytul VARCHAR(25) NOT NULL,
@@ -36,10 +38,17 @@ SELECT * FROM Ksiazki;
 SELECT tytul, autor_imie, autor_nazw, opis
 FROM Ksiazki
 WHERE autor_imie IN ('Henryk', 'Jan', 'Adam')
-ORDER BY autor_nazw ORDER BY autor_nazw;
+ORDER BY autor_nazw;
 
 -- Zadanie 16 --
 SELECT SUM(ilosc) FROM Ksiazki;
 
 -- Zadanie 17 --
-SELECT MIN(ilosc), tutyl, autor_imie, autor_nazw FROM Ksiazki;
+SELECT tytul, ilosc, autor_imie, autor_nazw
+FROM Ksiazki
+WHERE ilosc = (SELECT MIN(ilosc) FROM Ksiazki);
+
+-- Zadanie 18 --
+SELECT tytul, ilosc, autor_imie, autor_nazw
+FROM Ksiazki
+WHERE ilosc = (SELECT MAX(ilosc) FROM Ksiazki);
