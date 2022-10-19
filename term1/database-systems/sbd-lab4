@@ -25,9 +25,10 @@ SELECT * FROM Ksiazki;
 INSERT INTO Ksiazki(tytul, autor_imie, autor_nazw, cena, ilosc, data_wydania, gatunek, opis)
 VALUES
     ('Potop', 'Henryk', 'Sienkiewicz', 39.99, 10, '2001-02-11', 'przygodowa', 'lektura szkolna'),
-    ('Plagi Sanhedrynu', 'Henryk', 'Pająk', 29.99, 17, '2004-06-21', 'historyczne', 'książka wojenna'),
+    ('Plagi Sanhedrynu', 'Henryk', 'Pająk', 29.99, 10, '2004-06-21', 'historyczne', 'książka wojenna'),
+    ('Imperializm państwowy', 'Adolf', 'Bocheński', 24.99, 9, '2015-02-02', 'powieść historyczna', 'historia'),
     ('Gdzie śpiewają raki', 'Delia', 'Owens', 26.83, 9, '2022-07-13', 'literatura piękna', 'lektura szkolna'),
-    ('Autobiografia', 'Adam', 'Małysz', 39.99, 10, '2001-02-11', 'przygodowa', 'biograficzne');
+    ('Autobiografia', 'Adam', 'Małysz', 1.99, 10, '2001-02-12', 'przygodowa', 'biograficzne');
 
 -- Zadanie 13 --
 SELECT COUNT(*) FROM Ksiazki;
@@ -80,3 +81,30 @@ FROM Ksiazki
 WHERE SOUNDEX(autor_imie) = SOUNDEX('Henric')
 ORDER BY autor_nazw;
 
+-- Zadanie 24 --
+DELETE FROM Ksiazki
+WHERE autor_imie='Adolf' OR cena<2;
+SELECT * FROM Ksiazki;
+
+-- Zadanie 25 --
+SELECT *
+FROM Ksiazki
+WHERE cena < (
+    SELECT cena
+    FROM Ksiazki
+    WHERE tytul LIKE 'Potop'
+);
+
+-- Zadanie 26 --
+SELECT *
+FROM Ksiazki As k
+WHERE k.ilosc > 3 AND k.cena < 50;
+
+-- Zadanie 27 --
+SELECT *
+FROM Ksiazki
+WHERE ilosc = (
+    SELECT ilosc
+    FROM Ksiazki
+    WHERE data_wydania='2001-02-11'  
+);
