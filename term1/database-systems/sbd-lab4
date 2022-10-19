@@ -25,6 +25,7 @@ SELECT * FROM Ksiazki;
 INSERT INTO Ksiazki(tytul, autor_imie, autor_nazw, cena, ilosc, data_wydania, gatunek, opis)
 VALUES
     ('Potop', 'Henryk', 'Sienkiewicz', 39.99, 10, '2001-02-11', 'przygodowa', 'lektura szkolna'),
+    ('Plagi Sanhedrynu', 'Henryk', 'Pająk', 29.99, 17, '2004-06-21', 'historyczne', 'książka wojenna'),
     ('Gdzie śpiewają raki', 'Delia', 'Owens', 26.83, 9, '2022-07-13', 'literatura piękna', 'lektura szkolna'),
     ('Autobiografia', 'Adam', 'Małysz', 39.99, 10, '2001-02-11', 'przygodowa', 'biograficzne');
 
@@ -71,5 +72,11 @@ ORDER BY autor_nazw;
 -- Zadanie 22 --
 SELECT tytul, autor_imie, UPPER(autor_nazw), opis
 FROM Ksiazki
+ORDER BY autor_nazw;
+
+-- Zadanie 23 --
+SELECT tytul, autor_imie, autor_nazw, opis
+FROM Ksiazki
+WHERE SOUNDEX(autor_imie) = SOUNDEX('Henric')
 ORDER BY autor_nazw;
 
