@@ -26,7 +26,7 @@ INSERT INTO Ksiazki(tytul, autor_imie, autor_nazw, cena, ilosc, data_wydania, ga
 VALUES
     ('Potop', 'Henryk', 'Sienkiewicz', 39.99, 10, '2001-02-11', 'przygodowa', 'lektura szkolna'),
     ('Gdzie śpiewają raki', 'Delia', 'Owens', 26.83, 9, '2022-07-13', 'literatura piękna', 'lektura szkolna'),
-    ('Autobiografia', 'Adam', 'Małysz', 39.99, 10, '2001-02-11', 'przygodowa', 'lektura szkolna');
+    ('Autobiografia', 'Adam', 'Małysz', 39.99, 10, '2001-02-11', 'przygodowa', 'biograficzne');
 
 -- Zadanie 13 --
 SELECT COUNT(*) FROM Ksiazki;
@@ -52,3 +52,24 @@ WHERE ilosc = (SELECT MIN(ilosc) FROM Ksiazki);
 SELECT tytul, ilosc, autor_imie, autor_nazw
 FROM Ksiazki
 WHERE ilosc = (SELECT MAX(ilosc) FROM Ksiazki);
+
+-- Zadanie 19 --
+SELECT tytul, autor_imie, autor_nazw, opis, LENGTH(opis)
+FROM Ksiazki
+ORDER BY autor_nazw;
+
+-- Zadanie 20 --
+SELECT tytul, autor_imie, autor_nazw, RIGHT(opis,5)
+FROM Ksiazki
+ORDER BY autor_nazw;
+
+-- Zadanie 21 --
+SELECT tytul, autor_imie, autor_nazw, LOWER(opis)
+FROM Ksiazki
+ORDER BY autor_nazw;
+
+-- Zadanie 22 --
+SELECT tytul, autor_imie, UPPER(autor_nazw), opis
+FROM Ksiazki
+ORDER BY autor_nazw;
+
