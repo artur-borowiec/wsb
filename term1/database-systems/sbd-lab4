@@ -129,3 +129,8 @@ SELECT tytul, autor_imie, autor_nazw, cena, ilosc, data_wydania, gatunek, LEFT(o
 FROM Ksiazki
 ORDER BY autor_nazw;
 
+-- Zadanie 31 --
+DELETE FROM Ksiazki
+WHERE LEFT(autor_nazw, 1) = 'S' AND cena > 4 AND cena < 40 AND ilosc > 5 AND ilosc < 15;
+SELECT * FROM Ksiazki;
+
