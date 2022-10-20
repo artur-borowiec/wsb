@@ -28,7 +28,8 @@ VALUES
     ('Plagi Sanhedrynu', 'Henryk', 'Pająk', 29.99, 10, '2004-06-21', 'historyczne', 'książka wojenna'),
     ('Imperializm państwowy', 'Adolf', 'Bocheński', 24.99, 9, '2015-02-02', 'powieść historyczna', 'historia'),
     ('Gdzie śpiewają raki', 'Delia', 'Owens', 26.83, 9, '2022-07-13', 'literatura piękna', 'lektura szkolna'),
-    ('Autobiografia', 'Adam', 'Małysz', 1.99, 10, '2001-02-12', 'przygodowa', 'biograficzne');
+    ('Autobiografia', 'Adam', 'Małysz', 1.99, 10, '2001-02-12', 'przygodowa', 'biograficzne'),
+    ('Dziady', 'Adam', 'Mickiewicz', 19.99, 21, '2021-12-21', 'literatura piękna', 'lektura szkolna');
 
 -- Zadanie 13 --
 SELECT COUNT(*) FROM Ksiazki;
@@ -108,3 +109,23 @@ WHERE ilosc = (
     FROM Ksiazki
     WHERE data_wydania='2001-02-11'  
 );
+
+-- Zadanie 28 --
+SELECT *
+FROM Ksiazki
+WHERE autor_nazw = 'Sienkiewicz'
+UNION
+SELECT *
+FROM Ksiazki
+WHERE autor_nazw = 'Mickiewicz';
+
+-- Zadanie 29 --
+SELECT *
+FROM Ksiazki
+WHERE YEAR(data_wydania) >= 2001;
+
+-- Zadanie 30 --
+SELECT tytul, autor_imie, autor_nazw, cena, ilosc, data_wydania, gatunek, LEFT(opis,5)
+FROM Ksiazki
+ORDER BY autor_nazw;
+
