@@ -28,8 +28,22 @@ VALUES
     ('Plagi Sanhedrynu', 'Henryk', 'Pająk', 29.99, 10, '2004-06-21', 'historyczne', 'książka wojenna'),
     ('Imperializm państwowy', 'Adolf', 'Bocheński', 24.99, 9, '2015-02-02', 'powieść historyczna', 'historia'),
     ('Gdzie śpiewają raki', 'Delia', 'Owens', 26.83, 9, '2022-07-13', 'literatura piękna', 'lektura szkolna'),
-    ('Autobiografia', 'Adam', 'Małysz', 1.99, 10, '2001-02-12', 'przygodowa', 'biograficzne'),
-    ('Dziady', 'Adam', 'Mickiewicz', 19.99, 21, '2021-12-21', 'literatura piękna', 'lektura szkolna');
+    ('Czarne słońce', 'Jakub', 'Żulczyk', 22.99, 32, '2019-10-26', 'literatura piękna', 'science fiction'),
+    ('Dziady', 'Adam', 'Mickiewicz', 19.99, 21, '2021-12-21', 'literatura piękna', 'lektura szkolna'),
+    ('Pan Tadeusz', 'Adam', 'Mickiewicz', 27.99, 19, '1906-01-01', 'literatura polska', 'lektura szkolna'),
+    ('Lambro', 'Juliusz', 'Słowacki', 18.10, 35, '2013-01-01', 'literatura piękna', 'powieść'),
+    ('Winnetou', 'Karol', 'May', 14.99, 17, '1956-01-01', 'powieść przygodowa', 'literatura dziecięco-młodzieżowa'),
+    ('Uwięziona', 'Marcel', 'Proust', 12.99, 5, '1958-01-01', 'powieść', 'cykl quasi-autobiograficzny'),
+    ('Malibu płonie', 'Taylor', 'Reid', 39.99, 2, '2012-05-27', 'literatura piękna', 'wydawnictwo Czwarta Strona'),
+    ('Credence', 'Penelope', 'Douglas', 19.99, 20, '2022-09-08', 'literatura obyczajowa', 'romans'),
+    ('Miasto w chmurach', 'Anthony', 'Doerr', 19.99, 20, '2021-09-28', 'literatura piękna', 'relacje międzyludzkie'),
+    ('It ends with us', 'Colleen', 'Hoover', 12.99, 102, '2016-08-02', 'literatura obyczajowa', 'romans'),
+    ('The love hypothesis', 'Ali', 'Hazelwood', 14.99, 12, '2021-01-01', 'literatura obyczajowa', 'romans'),
+    ('Werdykt', 'Remigiusz', 'Mróz', 23.99, 16, '2022-09-28', 'literatura polska', 'sensacja, thriller'),
+    ('Małe życie', 'Hanya', 'Yanahigara', 19.99, 13, '2015-03-10', 'literatura piękna', 'wydawnictwo WAB'),
+    ('Empuzjon', 'Olga', 'Tokarczuk', 19.99, 10, '2022-06-01', 'literatura polska', 'najnowsza powieść'),
+    ('Krew i popiół', 'Jennifer', 'Armentrout', 9.99, 10, '2020-03-30', 'fantasy', 'science fiction'),
+    ('Gracz', 'Fiodor', 'Dostojewski', 22.00, 12, '1964-01-01', 'literatura rosyjska', 'powieść, hazard');
 
 -- Zadanie 13 --
 SELECT COUNT(*) FROM Ksiazki;
@@ -85,7 +99,6 @@ ORDER BY autor_nazw;
 -- Zadanie 24 --
 DELETE FROM Ksiazki
 WHERE autor_imie='Adolf' OR cena<2;
-SELECT * FROM Ksiazki;
 
 -- Zadanie 25 --
 SELECT *
@@ -132,5 +145,7 @@ ORDER BY autor_nazw;
 -- Zadanie 31 --
 DELETE FROM Ksiazki
 WHERE LEFT(autor_nazw, 1) = 'S' AND cena > 4 AND cena < 40 AND ilosc > 5 AND ilosc < 15;
-SELECT * FROM Ksiazki;
 
+-- Zadanie 32 --
+DELETE FROM Ksiazki
+WHERE autor_nazw != 'Mickiewicz' AND cena < 1.5;
