@@ -26,3 +26,52 @@ DESC Sklepy;
 ALTER TABLE Sklepy
 ADD CONSTRAINT id_sklepu_spr
 CHECK (id_sklepu BETWEEN 0 AND 9999);
+
+-- Zadanie 13 --
+ALTER TABLE Sklepy
+ADD CONSTRAINT godz_otwarcia_spr
+CHECK (godz_otwarcia BETWEEN '06:00:00' AND '12:00:00');
+
+-- Zadanie 14 --
+ALTER TABLE Sklepy
+ADD CONSTRAINT godz_zamkniecia_spr
+CHECK (godz_zamkniecia BETWEEN '13:00:00' AND '24:00:00');
+
+-- Zadanie 15 --
+SELECT COUNT(*) FROM Sklepy;
+
+-- Zadanie 16 --
+CREATE TABLE Produkty(
+    id_prod INT NOT NULL PRIMARY KEY,
+    nazwa VARCHAR(30) NOT NULL,
+    cena DECIMAL(6,2) NOT NULL,
+    ilosc INT NOT NULL,
+    data_produkcji DATE NULL,
+    gatunek VARCHAR(25) NULL,
+    opis VARCHAR(80) NULL,
+    fk_sklepu INT NULL,
+    FOREIGN KEY (fk_sklepu) REFERENCES Sklepy(id_sklepu),
+    CONSTRAINT nazwa_spr CHECK (nazwa <> ''),
+    CONSTRAINT id_prod_spr CHECK (id_prod BETWEEN 0 AND 9999),
+    CONSTRAINT cena_spr CHECK (cena >= 0.00 AND cena < 1000.00),
+    CONSTRAINT ilosc_spr CHECK (ilosc >= 0),
+    CONSTRAINT data_produkcji_spr CHECK (data_produkcji >= '1980-01-01'),
+    CONSTRAINT gatunek_spr CHECK (gatunek IN ('I klasa', 'II klasa', 'III klasa' ,'0 klasa'))
+);
+
+-- Zadanie 17 --
+DESCRIBE Produkty;
+ 
+-- Zadanie 18 --
+SELECT * FROM Sklepy;
+
+-- Zadanie 19 --
+ALTER TABLE Produkty
+ADD CONSTRAINT nazwa_spr2 UNIQUE(nazwa);
+
+-- Zadanie 20 --
+INSERT INTO Sklepy(id_sklepu, nazwa, adres, telefon, godz_otwarcia, godz_zamkniecia, opis)
+VALUES(1, 'Wawrzywniak Sp z o.o.', 'Bydgoszcz Grochowskiego 3/1', '52 32-73-821', '10:00:00', '18:00:00', 'Sprzedaz warzyw i owocow');
+
+-- Zadanie 21 --
+SELECT COUNT(*) FROM Sklepy;
