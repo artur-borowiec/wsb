@@ -57,4 +57,23 @@ def task69():
     print(countries)
     choice = input("Choose a country: ")
     print(countries.index(choice))
+
+def task70():
+    countries = ("Poland", "Germany", "Slovakia", "Hungary", "Greece")
+    print(countries)
+    choice = int(input("Choose a country (0-4): "))
+    print(countries[choice])
     
+def task71():
+    sports = ["football", "table tennis"]
+    sport = input("What's your favorite sport?: ")
+    sports.append(sport)
+    sports.sort()
+    print(sports)
+    
+def task72():
+    subjects = ['maths', 'arts', 'english', 'french', 'physics', 'chemistry']
+    print(subjects)
+    notLiked = input("What subject you don't enjoy? ")
+    subjects.remove(notLiked.lower())
+    print(subjects)
