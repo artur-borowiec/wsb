@@ -30,4 +30,24 @@ def task58():
             score+=1
         else: print("Wrong!")
     print(f"You scored {score} points!")
-        
+
+def task59():
+    colors = ["red", "blue", "black", "white", "green"]
+    sentences = [
+        "You were caught RED handed",
+        "You are probably feeling BLUE right now",
+        "Don't be a BLACK sheep in the herd",
+        "Don't tell me this WHITE lie",
+        "I bet you are GREEN with envy"
+    ]
+    pickedByCpu = colors[random.randint(0,4)]
+    chosenColor = chooseAColor()
+    choice = colors.index(chosenColor)
+    while chosenColor != pickedByCpu:
+        print(sentences[choice])
+        chosenColor = chooseAColor()
+        choice = colors.index(chosenColor)
+    print("Well done")
+
+def chooseAColor():
+    return input("Pick one of colors (red, blue, black, white, green): ").lower()
