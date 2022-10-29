@@ -38,7 +38,8 @@ ADD CONSTRAINT godz_zamkniecia_spr
 CHECK (godz_zamkniecia BETWEEN '13:00:00' AND '24:00:00');
 
 -- Zadanie 15 --
-SELECT COUNT(*) FROM Sklepy;
+SELECT COUNT(*)
+FROM Sklepy;
 
 -- Zadanie 16 --
 CREATE TABLE Produkty(
@@ -63,7 +64,8 @@ CREATE TABLE Produkty(
 DESCRIBE Produkty;
  
 -- Zadanie 18 --
-SELECT * FROM Sklepy;
+SELECT *
+FROM Sklepy;
 
 -- Zadanie 19 --
 ALTER TABLE Produkty
@@ -75,3 +77,50 @@ VALUES(1, 'Wawrzywniak Sp z o.o.', 'Bydgoszcz Grochowskiego 3/1', '52 32-73-821'
 
 -- Zadanie 21 --
 SELECT COUNT(*) FROM Sklepy;
+
+-- Zadanie 22 --
+SELECT *
+FROM Sklepy
+ORDER BY nazwa;
+
+-- Zadanie 23 --
+INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+VALUES(1, 'pomidory', 5.99, 15, '2011-01-20', 'I klasa', 'pomidory krajowe', 1);
+
+-- Zadamoe 23 --
+INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+VALUES(2, 'jablka', 4.50, 20, '2011-01-17', 'I klasa', 'goldeny', NULL);
+
+-- Zadanie 24 --
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, 'jablka', 3.20, 10, '2011-01-15', 'II klasa', 'robaczywki', 2);
+
+-- Zadanie 25 --
+SELECT COUNT(*)
+FROM Produkty;
+
+-- Zadanie 26 --
+SELECT * FROM Produkty
+ORDER BY nazwa;
+
+-- Zadanie 27 --
+SELECT SUM(ilosc)
+FROM Produkty;
+
+-- Zadanie 28 --
+SELECT SUM(ilosc)
+FROM Sklepy, Produkty
+WHERE Sklepy.id_sklepu=Produkty.fk_sklepu AND Sklepy.nazwa='Wawrzywniak Sp z o.o.';
+
+-- Zadanie 29 --
+SELECT Produkty.nazwa, cena, ilosc, Sklepy.nazwa, adres
+FROM Sklepy, Produkty
+WHERE Sklepy.id_sklepu=Produkty.fk_sklepu
+ORDER BY Produkty.nazwa;
+
+-- Zadanie 30 --
+SELECT Produkty.nazwa, cena, ilosc, Sklepy.nazwa, adres
+FROM Sklepy
+RIGHT OUTER JOIN Produkty
+ON Sklepy.id_sklepu=Produkty.fk_sklepu WHERE cena > 0 AND ilosc > 0
+ORDER BY Produkty.nazwa;
