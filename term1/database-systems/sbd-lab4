@@ -1,151 +1,175 @@
--- https://paiza.io/projects/MsHJEmoGHv_8C90CZCLThQ
+-- https://paiza.io/projects/yEuT47x_uy6Ydx9lz7StEg?language=mysql
 
--- Zadanie 08 --
-CREATE TABLE Ksiazki(
-    tytul VARCHAR(25) NOT NULL,
-    autor_imie VARCHAR(20) NOT NULL,
-    autor_nazw VARCHAR(20) NOT NULL,
-    cena FLOAT(4,2) NOT NULL,
-    ilosc INT NOT NULL,
-    data_wydania DATE NULL,
-    gatunek VARCHAR(20) NULL,
-    opis VARCHAR(40) NULL
+-- Zadanie 7 --
+SET sql_mode='STRICT_ALL_TABLES';
+
+-- Zadanie 8 --
+CREATE TABLE Sklepy(
+    id_sklepu INT NOT NULL PRIMARY KEY,
+    nazwa VARCHAR(30) NOT NULL,
+    adres VARCHAR(40) NULL,
+    telefon Varchar(15) NULL,
+    godz_otwarcia TIME NULL,
+    godz_zamkniecia TIME NULL
 );
 
--- Zadanie 09 --
-DESCRIBE Ksiazki;
+-- Zadanie 9 --
+DESCRIBE Sklepy;
 
 -- Zadanie 10 --
-SHOW COLUMNS FROM Ksiazki;
+ALTER TABLE Sklepy ADD COLUMN opis VARCHAR(50) NULL;
 
 -- Zadanie 11 --
-SELECT * FROM Ksiazki;
+DESC Sklepy;
 
 -- Zadanie 12 --
-INSERT INTO Ksiazki(tytul, autor_imie, autor_nazw, cena, ilosc, data_wydania, gatunek, opis)
-VALUES
-    ('Potop', 'Henryk', 'Sienkiewicz', 39.99, 10, '2001-02-11', 'przygodowa', 'lektura szkolna'),
-    ('Plagi Sanhedrynu', 'Henryk', 'Pająk', 29.99, 10, '2004-06-21', 'historyczne', 'książka wojenna'),
-    ('Imperializm państwowy', 'Adolf', 'Bocheński', 24.99, 9, '2015-02-02', 'powieść historyczna', 'historia'),
-    ('Gdzie śpiewają raki', 'Delia', 'Owens', 26.83, 9, '2022-07-13', 'literatura piękna', 'lektura szkolna'),
-    ('Czarne słońce', 'Jakub', 'Żulczyk', 22.99, 32, '2019-10-26', 'literatura piękna', 'science fiction'),
-    ('Dziady', 'Adam', 'Mickiewicz', 19.99, 21, '2021-12-21', 'literatura piękna', 'lektura szkolna'),
-    ('Pan Tadeusz', 'Adam', 'Mickiewicz', 27.99, 19, '1906-01-01', 'literatura polska', 'lektura szkolna'),
-    ('Lambro', 'Juliusz', 'Słowacki', 18.10, 35, '2013-01-01', 'literatura piękna', 'powieść'),
-    ('Winnetou', 'Karol', 'May', 14.99, 17, '1956-01-01', 'powieść przygodowa', 'literatura dziecięco-młodzieżowa'),
-    ('Uwięziona', 'Marcel', 'Proust', 12.99, 5, '1958-01-01', 'powieść', 'cykl quasi-autobiograficzny'),
-    ('Malibu płonie', 'Taylor', 'Reid', 39.99, 2, '2012-05-27', 'literatura piękna', 'wydawnictwo Czwarta Strona'),
-    ('Credence', 'Penelope', 'Douglas', 19.99, 20, '2022-09-08', 'literatura obyczajowa', 'romans'),
-    ('Miasto w chmurach', 'Anthony', 'Doerr', 19.99, 20, '2021-09-28', 'literatura piękna', 'relacje międzyludzkie'),
-    ('It ends with us', 'Colleen', 'Hoover', 12.99, 102, '2016-08-02', 'literatura obyczajowa', 'romans'),
-    ('The love hypothesis', 'Ali', 'Hazelwood', 14.99, 12, '2021-01-01', 'literatura obyczajowa', 'romans'),
-    ('Werdykt', 'Remigiusz', 'Mróz', 23.99, 16, '2022-09-28', 'literatura polska', 'sensacja, thriller'),
-    ('Małe życie', 'Hanya', 'Yanahigara', 19.99, 13, '2015-03-10', 'literatura piękna', 'wydawnictwo WAB'),
-    ('Empuzjon', 'Olga', 'Tokarczuk', 19.99, 10, '2022-06-01', 'literatura polska', 'najnowsza powieść'),
-    ('Krew i popiół', 'Jennifer', 'Armentrout', 9.99, 10, '2020-03-30', 'fantasy', 'science fiction'),
-    ('Gracz', 'Fiodor', 'Dostojewski', 22.00, 12, '1964-01-01', 'literatura rosyjska', 'powieść, hazard');
+ALTER TABLE Sklepy
+ADD CONSTRAINT id_sklepu_spr
+CHECK (id_sklepu BETWEEN 0 AND 9999);
 
 -- Zadanie 13 --
-SELECT COUNT(*) FROM Ksiazki;
+ALTER TABLE Sklepy
+ADD CONSTRAINT godz_otwarcia_spr
+CHECK (godz_otwarcia BETWEEN '06:00:00' AND '12:00:00');
 
 -- Zadanie 14 --
-SELECT * FROM Ksiazki;
+ALTER TABLE Sklepy
+ADD CONSTRAINT godz_zamkniecia_spr
+CHECK (godz_zamkniecia BETWEEN '13:00:00' AND '24:00:00');
 
 -- Zadanie 15 --
-SELECT tytul, autor_imie, autor_nazw, opis
-FROM Ksiazki
-WHERE autor_imie IN ('Henryk', 'Jan', 'Adam')
-ORDER BY autor_nazw;
+SELECT COUNT(*)
+FROM Sklepy;
 
 -- Zadanie 16 --
-SELECT SUM(ilosc) FROM Ksiazki;
+CREATE TABLE Produkty(
+    id_prod INT NOT NULL PRIMARY KEY,
+    nazwa VARCHAR(30) NOT NULL,
+    cena DECIMAL(6,2) NOT NULL,
+    ilosc INT NOT NULL,
+    data_produkcji DATE NULL,
+    gatunek VARCHAR(25) NULL,
+    opis VARCHAR(80) NULL,
+    fk_sklepu INT NULL,
+    FOREIGN KEY (fk_sklepu) REFERENCES Sklepy(id_sklepu),
+    CONSTRAINT nazwa_spr CHECK (nazwa <> ''),
+    CONSTRAINT id_prod_spr CHECK (id_prod BETWEEN 0 AND 9999),
+    CONSTRAINT cena_spr CHECK (cena >= 0.00 AND cena < 1000.00),
+    CONSTRAINT ilosc_spr CHECK (ilosc >= 0),
+    CONSTRAINT data_produkcji_spr CHECK (data_produkcji >= '1980-01-01'),
+    CONSTRAINT gatunek_spr CHECK (gatunek IN ('I klasa', 'II klasa', 'III klasa' ,'0 klasa'))
+);
 
 -- Zadanie 17 --
-SELECT tytul, ilosc, autor_imie, autor_nazw
-FROM Ksiazki
-WHERE ilosc = (SELECT MIN(ilosc) FROM Ksiazki);
-
+DESCRIBE Produkty;
+ 
 -- Zadanie 18 --
-SELECT tytul, ilosc, autor_imie, autor_nazw
-FROM Ksiazki
-WHERE ilosc = (SELECT MAX(ilosc) FROM Ksiazki);
+SELECT *
+FROM Sklepy;
 
 -- Zadanie 19 --
-SELECT tytul, autor_imie, autor_nazw, opis, LENGTH(opis)
-FROM Ksiazki
-ORDER BY autor_nazw;
+ALTER TABLE Produkty
+ADD CONSTRAINT nazwa_spr2 UNIQUE(nazwa);
 
 -- Zadanie 20 --
-SELECT tytul, autor_imie, autor_nazw, RIGHT(opis,5)
-FROM Ksiazki
-ORDER BY autor_nazw;
+INSERT INTO Sklepy(id_sklepu, nazwa, adres, telefon, godz_otwarcia, godz_zamkniecia, opis)
+VALUES
+    (1, 'Wawrzyniak Sp z o.o.', 'Bydgoszcz Grochowskiego 3/1', '52 32-73-821', '10:00:00', '18:00:00', 'Sprzedaz warzyw i owocow'),
+    (2, 'Warzywa i owoce', 'Warszawa Czarneckiego 23/1', '12 32-23-221', '10:00:00', '18:00:00', 'Sprzedaz zywnosci');
 
 -- Zadanie 21 --
-SELECT tytul, autor_imie, autor_nazw, LOWER(opis)
-FROM Ksiazki
-ORDER BY autor_nazw;
+SELECT COUNT(*) FROM Sklepy;
 
 -- Zadanie 22 --
-SELECT tytul, autor_imie, UPPER(autor_nazw), opis
-FROM Ksiazki
-ORDER BY autor_nazw;
+SELECT *
+FROM Sklepy
+ORDER BY nazwa;
 
 -- Zadanie 23 --
-SELECT tytul, autor_imie, autor_nazw, opis
-FROM Ksiazki
-WHERE SOUNDEX(autor_imie) = SOUNDEX('Henric')
-ORDER BY autor_nazw;
+INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+VALUES(1, 'pomidory', 5.99, 15, '2011-01-20', 'I klasa', 'pomidory krajowe', 1);
+
+-- Zadamoe 23 --
+INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+VALUES(2, 'jablka', 4.50, 20, '2011-01-17', 'I klasa', 'goldeny', 2);
 
 -- Zadanie 24 --
-DELETE FROM Ksiazki
-WHERE autor_imie='Adolf' OR cena<2;
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, 'jablka', 3.20, 10, '2011-01-15', 'II klasa', 'robaczywki', 2);
 
 -- Zadanie 25 --
-SELECT *
-FROM Ksiazki
-WHERE cena < (
-    SELECT cena
-    FROM Ksiazki
-    WHERE tytul LIKE 'Potop'
-);
+SELECT COUNT(*)
+FROM Produkty;
 
 -- Zadanie 26 --
-SELECT *
-FROM Ksiazki As k
-WHERE k.ilosc > 3 AND k.cena < 50;
+SELECT * FROM Produkty
+ORDER BY nazwa;
 
 -- Zadanie 27 --
-SELECT *
-FROM Ksiazki
-WHERE ilosc = (
-    SELECT ilosc
-    FROM Ksiazki
-    WHERE data_wydania='2001-02-11'  
-);
+SELECT SUM(ilosc)
+FROM Produkty;
 
 -- Zadanie 28 --
-SELECT *
-FROM Ksiazki
-WHERE autor_nazw = 'Sienkiewicz'
-UNION
-SELECT *
-FROM Ksiazki
-WHERE autor_nazw = 'Mickiewicz';
+SELECT SUM(ilosc)
+FROM Sklepy, Produkty
+WHERE Sklepy.id_sklepu=Produkty.fk_sklepu AND Sklepy.nazwa='Wawrzywniak Sp z o.o.';
 
 -- Zadanie 29 --
-SELECT *
-FROM Ksiazki
-WHERE YEAR(data_wydania) >= 2001;
+SELECT Produkty.nazwa, cena, ilosc, Sklepy.nazwa, adres
+FROM Sklepy, Produkty
+WHERE Sklepy.id_sklepu=Produkty.fk_sklepu
+ORDER BY Produkty.nazwa;
 
 -- Zadanie 30 --
-SELECT tytul, autor_imie, autor_nazw, cena, ilosc, data_wydania, gatunek, LEFT(opis,5)
-FROM Ksiazki
-ORDER BY autor_nazw;
+SELECT Produkty.nazwa, cena, ilosc, Sklepy.nazwa, adres
+FROM Sklepy
+RIGHT OUTER JOIN Produkty
+ON Sklepy.id_sklepu=Produkty.fk_sklepu WHERE cena > 0 AND ilosc > 0
+ORDER BY Produkty.nazwa;
 
 -- Zadanie 31 --
-DELETE FROM Ksiazki
-WHERE LEFT(autor_nazw, 1) = 'S' AND cena > 4 AND cena < 40 AND ilosc > 5 AND ilosc < 15;
+SELECT Produkty.nazwa, cena, ilosc, Sklepy.nazwa, adres
+FROM Produkty
+LEFT OUTER JOIN Sklepy
+ON Produkty.fk_sklepu=Sklepy.id_sklepu WHERE cena > 0 AND ilosc > 0
+ORDER BY Produkty.nazwa;
 
 -- Zadanie 32 --
-DELETE FROM Ksiazki
-WHERE autor_nazw != 'Mickiewicz' AND cena < 1.5;
+SELECT Sklepy.nazwa, SUM(ilosc)
+FROM Sklepy
+LEFT OUTER JOIN Produkty
+ON Sklepy.id_sklepu=Produkty.fk_sklepu
+GROUP BY Sklepy.nazwa
+ORDER BY Sklepy.nazwa;
+
+-- Zadanie 33 --
+SELECT Sklepy.nazwa, adres, telefon
+FROM Sklepy
+LEFT OUTER JOIN Produkty
+ON Sklepy.id_sklepu=Produkty.fk_sklepu
+WHERE Produkty.nazwa='jablka' AND godz_otwarcia >= '09:00:00';
+
+-- Zadanie 34 --
+-- nazwa != ''
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, '', 3.20, 10, '2011-01-15', 'II klasa', 'robaczywki', 2);
+
+-- 0 <= id < 10000
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, 'arbuzy', 3.20, 10, '2011-01-15', 'II klasa', 'robaczywki', 2);
+
+-- 0.0 <= cena <= 1000.0
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, 'arbuzy', 1100.0, 10, '2011-01-15', 'II klasa', 'robaczywki', 2);
+
+-- 0.0 <= ilosc
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, 'arbuzy', 10.0, -2, '2011-01-15', 'II klasa', 'robaczywki', 1);
+
+-- data_produkcji >= '1980-01-01'
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, 'arbuzy', 10.0, 5, '1979-01-15', 'II klasa', 'robaczywki', 1);
+
+-- gatunek IN (I klasa, II klasa, III klasa ,0 klasa)
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, 'arbuzy', 10.0, 5, '2011-01-15', 'IV klasa', 'robaczywki', 1);
