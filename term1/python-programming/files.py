@@ -23,6 +23,8 @@ def task106():
     for i in range(len(names)):
         file.write(f"{names[i]}\n")
     file.close()
+
+def task107():
     file = open("Names.txt", "r")
     print(file.read())
     file.close()
