@@ -1,0 +1,28 @@
+-- https://paiza.io/projects/yEuT47x_uy6Ydx9lz7StEg?language=mysql
+
+-- Zadanie 7 --
+SET sql_mode='STRICT_ALL_TABLES';
+
+-- Zadanie 8 --
+CREATE TABLE Sklepy(
+    id_sklepu INT NOT NULL PRIMARY KEY,
+    nazwa VARCHAR(30) NOT NULL,
+    adres VARCHAR(40) NULL,
+    telefon Varchar(15) NULL,
+    godz_otwarcia TIME NULL,
+    godz_zamkniecia TIME NULL
+);
+
+-- Zadanie 9 --
+DESCRIBE Sklepy;
+
+-- Zadanie 10 --
+ALTER TABLE Sklepy ADD COLUMN opis VARCHAR(50) NULL;
+
+-- Zadanie 11 --
+DESC Sklepy;
+
+-- Zadanie 12 --
+ALTER TABLE Sklepy
+ADD CONSTRAINT id_sklepu_spr
+CHECK (id_sklepu BETWEEN 0 AND 9999);
