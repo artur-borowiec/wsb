@@ -1,4 +1,5 @@
 import random
+import array
 
 def task56():
     num = random.randint(1,10)
@@ -82,4 +83,21 @@ def task87():
     word = input("Write a word: ")[::-1]
     for i in (range(len(word))):
         print(f"{word[i]}")
+        
+def task94():
+    numbers = array.array('i', [1, 2, 3, 4, 5])
+    choice = int(input("Choose a number: "))
+    while choice not in numbers:
+        choice = int(input("Try again: "))
+    print(numbers.index(choice))
+    
+        
+def task95():
+    numbers = array.array('i', [1, 2, 3, 4, 5])
+    choice = int(input("Choose a number: "))
+    while choice not in numbers:
+        choice = int(input("Try again: "))
+    print(numbers.index(choice))
+        
+        
         
