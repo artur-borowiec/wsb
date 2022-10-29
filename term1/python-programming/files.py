@@ -29,4 +29,15 @@ def task107():
     print(file.read())
     file.close()
     
+def createCsv():
+    file = open("Stars.csv", "w")
+    newRecord = "Brian,73,Taurus\n"
+    file.write(str(newRecord))
+    file.close()
+
+def createBooksCsv():
+    file = open("Books.csv", "w")
+    file.write(str("0,Too Kill A Mockingbird,Harper Lee,1960"))
+    file.write(str("1,A Brief History of Time,Stephen Hawking,1988"))
+    file.close()
     

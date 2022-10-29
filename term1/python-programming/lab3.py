@@ -90,14 +90,16 @@ def task94():
     while choice not in numbers:
         choice = int(input("Try again: "))
     print(numbers.index(choice))
-    
         
-def task95():
-    numbers = array.array('i', [1, 2, 3, 4, 5])
-    choice = int(input("Choose a number: "))
-    while choice not in numbers:
-        choice = int(input("Try again: "))
-    print(numbers.index(choice))
-        
-        
+def task106():
+    file = open("Names.txt", "w")
+    names = ["John", "Anne", "Michael", "Dwight", "Kevin"]
+    for i in range(len(names)):
+        file.write(f"{names[i]}\n")
+    file.close()
+
+def task107():
+    file = open("Names.txt", "r")
+    print(file.read())
+    file.close()        
         
