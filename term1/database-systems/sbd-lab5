@@ -73,7 +73,9 @@ ADD CONSTRAINT nazwa_spr2 UNIQUE(nazwa);
 
 -- Zadanie 20 --
 INSERT INTO Sklepy(id_sklepu, nazwa, adres, telefon, godz_otwarcia, godz_zamkniecia, opis)
-VALUES(1, 'Wawrzywniak Sp z o.o.', 'Bydgoszcz Grochowskiego 3/1', '52 32-73-821', '10:00:00', '18:00:00', 'Sprzedaz warzyw i owocow');
+VALUES
+    (1, 'Wawrzyniak Sp z o.o.', 'Bydgoszcz Grochowskiego 3/1', '52 32-73-821', '10:00:00', '18:00:00', 'Sprzedaz warzyw i owocow'),
+    (2, 'Warzywa i owoce', 'Warszawa Czarneckiego 23/1', '12 32-23-221', '10:00:00', '18:00:00', 'Sprzedaz zywnosci');
 
 -- Zadanie 21 --
 SELECT COUNT(*) FROM Sklepy;
@@ -85,11 +87,12 @@ ORDER BY nazwa;
 
 -- Zadanie 23 --
 INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
-VALUES(1, 'pomidory', 5.99, 15, '2011-01-20', 'I klasa', 'pomidory krajowe', 1);
-
--- Zadamoe 23 --
-INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
-VALUES(2, 'jablka', 4.50, 20, '2011-01-17', 'I klasa', 'goldeny', 1);
+VALUES
+    (1, 'pomidory', 5.99, 15, '2011-01-20', 'I klasa', 'pomidory krajowe', 1),
+    (2, 'jablka', 4.50, 20, '2011-01-17', 'I klasa', 'goldeny', 2),
+    (3, 'arbuzy', 3.90, 32, '2011-01-15', 'II klasa', 'gola', 1),
+    (4, 'cytryny', 2.40, 98, '2011-01-20', 'III klasa', 'eureka', null),
+    (5, 'maliny', 16.99, 25, '2011-01-10', 'I klasa', 'benefis', null);
 
 -- Zadanie 24 --
 -- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
@@ -125,7 +128,6 @@ RIGHT OUTER JOIN Produkty
 ON Sklepy.id_sklepu=Produkty.fk_sklepu WHERE cena > 0 AND ilosc > 0
 ORDER BY Produkty.nazwa;
 
-
 -- Zadanie 31 --
 SELECT Produkty.nazwa, cena, ilosc, Sklepy.nazwa, adres
 FROM Produkty
@@ -138,11 +140,37 @@ SELECT Sklepy.nazwa, SUM(ilosc)
 FROM Sklepy
 LEFT OUTER JOIN Produkty
 ON Sklepy.id_sklepu=Produkty.fk_sklepu
+GROUP BY Sklepy.nazwa
 ORDER BY Sklepy.nazwa;
 
 -- Zadanie 33 --
 SELECT Sklepy.nazwa, adres, telefon
 FROM Sklepy
-RIGHT OUTER JOIN Produkty
+LEFT OUTER JOIN Produkty
 ON Sklepy.id_sklepu=Produkty.fk_sklepu
-WHERE Produkty.nazwa='jablka';
+WHERE Produkty.nazwa='jablka' AND godz_otwarcia >= '09:00:00';
+
+-- Zadanie 34 --
+-- nazwa != ''
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, '', 3.20, 10, '2011-01-15', 'II klasa', 'robaczywki', 2);
+
+-- 0 <= id < 10000
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, 'arbuzy', 3.20, 10, '2011-01-15', 'II klasa', 'robaczywki', 2);
+
+-- 0.0 <= cena <= 1000.0
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, 'arbuzy', 1100.0, 10, '2011-01-15', 'II klasa', 'robaczywki', 2);
+
+-- 0.0 <= ilosc
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, 'arbuzy', 10.0, -2, '2011-01-15', 'II klasa', 'robaczywki', 1);
+
+-- data_produkcji >= '1980-01-01'
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, 'arbuzy', 10.0, 5, '1979-01-15', 'II klasa', 'robaczywki', 1);
+
+-- gatunek IN (I klasa, II klasa, III klasa ,0 klasa)
+-- INSERT INTO Produkty(id_prod, nazwa, cena, ilosc, data_produkcji, gatunek, opis, fk_sklepu)
+-- VALUES(15, 'arbuzy', 10.0, 5, '2011-01-15', 'IV klasa', 'robaczywki', 1);
