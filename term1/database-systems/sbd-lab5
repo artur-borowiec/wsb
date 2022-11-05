@@ -75,7 +75,10 @@ ADD CONSTRAINT nazwa_spr2 UNIQUE(nazwa);
 INSERT INTO Sklepy(id_sklepu, nazwa, adres, telefon, godz_otwarcia, godz_zamkniecia, opis)
 VALUES
     (1, 'Wawrzyniak Sp z o.o.', 'Bydgoszcz Grochowskiego 3/1', '52 32-73-821', '10:00:00', '18:00:00', 'Sprzedaz warzyw i owocow'),
-    (2, 'Warzywa i owoce', 'Warszawa Czarneckiego 23/1', '12 32-23-221', '10:00:00', '18:00:00', 'Sprzedaz zywnosci');
+    (2, 'Warzywa i owoce', 'Warszawa Czarneckiego 23/1', '12 32-23-221', '10:00:00', '18:00:00', 'Sprzedaz zywnosci'),
+    (3, 'Sklep warzywny', 'Wrocław Traugutta 13', '123 634 2184', '09:00:00', '18:00:00', 'Warzywa i owoce'),
+    (4, 'Sklep spożywczy osiedlowy', 'Legnica Długa 13', '1325 325434 34', '08:00:00', '20:00:00', 'Żywność w niskich cenach'),
+    (5, 'Zdrowa żywność', 'Kłodzko Rynek 15', '1987 8976 6574', '07:30:00', '19:00:00', 'Zdrowa żywność');
 
 -- Zadanie 21 --
 SELECT COUNT(*) FROM Sklepy;
