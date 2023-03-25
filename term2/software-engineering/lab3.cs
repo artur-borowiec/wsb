@@ -136,6 +136,47 @@ namespace ConsoleApp1
 
         }
 
+        static void lista_numeryczna()
+        {
+            List<int> lista_num = new List<int>();
+            int rand_num = new Random().Next(100, 200);
+
+            lista_num.Add(rand_num);
+            lista_num.Add(1);
+            lista_num.Add(214253);
+            lista_num.Add(-2);
+
+            Console.WriteLine("Lista numeryczna: ");
+            foreach(int x in lista_num)
+            {
+                Console.Write($"{x} ");
+            }
+        }
+
+        // Do listy numerycznej wprowadzić n wylosowanych liczb. Wypisać liczby większe od średniej.
+        static void lista_wieksze_od_sredniej(int n)
+        {
+            List<int> lista_num = new List<int>();
+            Random rand = new Random();
+
+            var sum = 0;
+            for (int i=0; i<n; i++)
+            {
+                var rand_num = rand.Next(1000);
+                sum += rand_num;
+                lista_num.Add(rand_num);
+            }
+
+            var avg = sum / n;
+            Console.WriteLine($"Avg: {avg}");
+            Console.WriteLine("Wieksze od sredniej:");
+            for (int i = 0; i < n; i++)
+            {
+                if (lista_num[i] > avg)
+                    Console.Write($"{lista_num[i]} ");
+            }
+        }
+
 
         static void Main(string[] args)
         {
@@ -147,9 +188,9 @@ namespace ConsoleApp1
             //wylosuj_slowa(znaki);
             //silnia(6);
             linia();
-            licz_litery(znaki);
-
-            // Do listy numerycznej wprowadzić n wylosowanych liczb.
+            //licz_litery(znaki);
+            //lista_numeryczna();
+            lista_wieksze_od_sredniej(10);
         }
     }
 }
