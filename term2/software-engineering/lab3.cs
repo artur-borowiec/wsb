@@ -17,8 +17,9 @@ namespace ConsoleApp1
                 "najczęściej odwiedzanych stron internetowych, a wiele stron uruchomiło jej mirrory lub forki. ";
 
         static void autor(string name) {
-            linia(name);
-            Console.WriteLine();
+            Console.WriteLine("Autor:" + name);
+
+            linia();
         }
 
         static void k1_lancuch() {
@@ -34,10 +35,9 @@ namespace ConsoleApp1
 
         }
         
-        static void linia(string zm) {
-            Console.WriteLine("Autor:" + zm);
+        static void linia() {
             for (int i=0; i <= 70; i++)
-                Console.WriteLine("=");
+                Console.Write("=");
             Console.WriteLine();
         }
 
@@ -130,6 +130,12 @@ namespace ConsoleApp1
             Console.WriteLine($"{input}! = {result}");
         }
 
+        // dwumian newtona
+        static void dwumian_newtona(int input)
+        {
+
+        }
+
 
         static void Main(string[] args)
         {
@@ -140,7 +146,10 @@ namespace ConsoleApp1
             //kolory(znaki);
             //wylosuj_slowa(znaki);
             //silnia(6);
+            linia();
             licz_litery(znaki);
+
+            // Do listy numerycznej wprowadzić n wylosowanych liczb.
         }
     }
 }
