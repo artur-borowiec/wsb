@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Numerics;
 using System.Text.RegularExpressions;
 
 namespace ConsoleApp1
@@ -94,7 +96,38 @@ namespace ConsoleApp1
         // zlicz kazdą literę
         static void licz_litery(string zm)
         {
+            var dict = new Dictionary<char, int>();
+            var chars = zm.ToCharArray();
 
+            for (int ctr = 0; ctr < chars.Length; ctr++)
+            {
+                //Console.WriteLine("   {0}: {1}", ctr, chars[ctr]);
+                var key = chars[ctr];
+                var count = 0;
+                if (dict.ContainsKey(key))
+                {
+                    count = dict[key];
+                    dict.Remove(key);
+                }
+                count++;
+                if(Char.IsLetter(key))
+                    dict.Add(key, count);
+            }
+
+            foreach (KeyValuePair<char, int> kvp in dict)
+            {
+                Console.WriteLine(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
+            }
+        }
+
+        // silnia
+        static void silnia(int input)
+        {
+            BigInteger result = 1;
+            for (int i = input; i > 0; i--)
+                result *= i;
+
+            Console.WriteLine($"{input}! = {result}");
         }
 
 
@@ -106,6 +139,8 @@ namespace ConsoleApp1
             //k1_lancuch();
             //kolory(znaki);
             //wylosuj_slowa(znaki);
+            //silnia(6);
+            licz_litery(znaki);
         }
     }
 }
