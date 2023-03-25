@@ -81,8 +81,14 @@ namespace ConsoleApp1
         // 10 slow
         static void wylosuj_slowa(string zm)
         {
-            Random r = new Random();
-            int i = r.Next(zm.Length);
+            for (int i = 0; i <= 10; i++)
+            {
+                Random r = new Random();
+                String[] split = zm.Split(" ");
+                int position = r.Next(split.Length);
+
+                Console.WriteLine(split[position]);
+            }
         }
 
         // zlicz kazdą literę
@@ -98,7 +104,8 @@ namespace ConsoleApp1
             autor("Artur Borowiec");
 
             //k1_lancuch();
-            kolory(znaki);
+            //kolory(znaki);
+            //wylosuj_slowa(znaki);
         }
     }
 }
