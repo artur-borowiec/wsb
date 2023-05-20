@@ -24,6 +24,7 @@ class Zespolona:
 z1 = Zespolona(3, 4)
 z2 = Zespolona(5, 2)
 z3 = Zespolona(3, -7)
-print(z1.modul())
-print(Zespolona.dodaj(z1,z1))
-print(Zespolona.mnoz(z2,z3))
+
+assert z1.modul() == 5.0
+assert str(Zespolona.dodaj(z1, z1)) == "6+8i"
+assert str(Zespolona.mnoz(z2, z3)) == "29+-29i"
