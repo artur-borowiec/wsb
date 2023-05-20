@@ -6,5 +6,8 @@ class Zespolona:
         self.re = re
         self.im = im
        
-       
-Zespolona(5, 4)
+    def modul(self):
+        return sqrt(self.re**2 + self.im**2)
+    
+z = Zespolona(3, 4)
+print(z.modul())
