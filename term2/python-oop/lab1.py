@@ -15,7 +15,15 @@ class Zespolona:
     @staticmethod
     def dodaj(zesp1, zesp2):
         return Zespolona(zesp1.re+zesp2.re, zesp1.im+zesp2.im)
+        
+    @staticmethod
+    def mnoz(zesp1, zesp2):
+        return Zespolona((zesp1.re * zesp2.re) - (zesp1.im * zesp2.im),
+            (zesp1.im * zesp2.re) + (zesp1.re * zesp2.im))
     
-z = Zespolona(3, 4)
-print(z.modul())
-print(Zespolona.dodaj(z,z))
+z1 = Zespolona(3, 4)
+z2 = Zespolona(5, 2)
+z3 = Zespolona(3, -7)
+print(z1.modul())
+print(Zespolona.dodaj(z1,z1))
+print(Zespolona.mnoz(z2,z3))
