@@ -1,7 +1,22 @@
 import math
 from math import sqrt
+from abc import abstractmethod
 
-class Zespolona:
+class Liczba:
+    def __init__(self):
+        pass
+    
+    @staticmethod
+    @abstractmethod
+    def dodaj(l1, l2):
+        pass
+    
+    @staticmethod
+    @abstractmethod
+    def mnoz(l1, l2):
+        pass
+
+class Zespolona(Liczba):
     def __init__(self, re, im=0.0):
         self.re = re
         self.im = im
@@ -29,7 +44,53 @@ assert z1.modul() == 5.0
 assert str(Zespolona.dodaj(z1, z1)) == "6+8i"
 assert str(Zespolona.mnoz(z2, z3)) == "29+-29i"
 
-class FunkcjaKwadratowa:
+class Calkowita(Liczba):
+    
+    def __init__(self, val):
+        self.val = val
+        
+    def __eq__(self, other):
+        return self.val == other.val
+        
+    @staticmethod
+    def dodaj(l1, l2):
+        return Calkowita(l1.val + l2.val)
+        
+    @staticmethod
+    def mnoz(l1, l2):
+        return Calkowita(l1.val * l2.val)
+        
+    @staticmethod
+    def odejmij(l1, l2):
+        return Calkowita(l1.val - l2.val)
+        
+    @staticmethod
+    def dziel(l1, l2):
+        return Calkowita(l1.val / l2.val)
+        
+c1 = Calkowita(10)
+c2 = Calkowita(2)
+
+assert Calkowita.mnoz(c1, c2) == Calkowita(20)
+assert Calkowita.dziel(c1, c2) == Calkowita(5)
+assert Calkowita.dodaj(c1, c2) == Calkowita(12)
+assert Calkowita.odejmij(c1, c2) == Calkowita(8)
+
+class Funkcja:
+    @abstractmethod
+    def __init__(self):
+        pass
+        
+    @abstractmethod
+    def rozwiaz(self):
+        pass
+        
+class FunkcjaLiniowa(Funkcja):
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+class FunkcjaKwadratowa(Funkcja):
     def __init__(self, a, b, c):
         self.a = a
         self.b = b
@@ -49,7 +110,7 @@ class FunkcjaKwadratowa:
             m1 = (-self.b - sqd) / (2*self.a)
             m2 = (-self.b + sqd) / (2*self.a)
             return f"{m1}, {m2}"
-        
+
         
 assert str(FunkcjaKwadratowa(2,3,4)) == "2x^2 + 3x + 4"
 fun1 = FunkcjaKwadratowa(2,4,2)
