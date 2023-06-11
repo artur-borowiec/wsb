@@ -84,11 +84,6 @@ class Funkcja:
     @abstractmethod
     def rozwiaz(self):
         pass
-        
-class FunkcjaLiniowa(Funkcja):
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
 
 class FunkcjaKwadratowa(Funkcja):
     def __init__(self, a, b, c):
@@ -124,6 +119,7 @@ class FunkcjaKwadratowa(Funkcja):
             return f"{m1}, {m2}"
             
 class FunkcjaLiniowa(FunkcjaKwadratowa):
+    # Dodalem konstruktor, zeby wymusic pierwszy parametr funkcji kwadratowej jako 0.
     def __init__(self, a, b):
         FunkcjaKwadratowa.__init__(self, 0, a, b)
         
