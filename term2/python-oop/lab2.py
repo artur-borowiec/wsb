@@ -97,12 +97,24 @@ class FunkcjaKwadratowa(Funkcja):
         self.c = c
         
     def __str__(self):
-        return f"{self.a}x^2 + {self.b}x + {self.c}"
+        str = ""
+        if (self.a != 0):
+            str += f"{self.a}x^2 + "
+        str += f"{self.b}x + {self.c}"
+        return str
         
     def rozwiaz(self):
+        if (self.a == 0):
+            if (self.b == 0):
+                if (self.c == 0):
+                    return "∞ rozwiazan"
+                else:
+                    return "Brak rozwiazan"
+            else:
+                return f"{-self.c / self.b}"
         d = self.b**2 - 4 * self.a * self.c
         if (d < 0):
-            return "Brak miejsc zerowych"
+            return "Brak rozwiazan"
         elif (d == 0):
             return(f"{-self.b / (2*self.a)}")
         else:
@@ -110,11 +122,27 @@ class FunkcjaKwadratowa(Funkcja):
             m1 = (-self.b - sqd) / (2*self.a)
             m2 = (-self.b + sqd) / (2*self.a)
             return f"{m1}, {m2}"
-
+            
+class FunkcjaLiniowa(FunkcjaKwadratowa):
+    def __init__(self, a, b):
+        FunkcjaKwadratowa.__init__(self, 0, a, b)
         
 assert str(FunkcjaKwadratowa(2,3,4)) == "2x^2 + 3x + 4"
 fun1 = FunkcjaKwadratowa(2,4,2)
 assert str(fun1) == "2x^2 + 4x + 2"
 assert fun1.rozwiaz() == '-1.0'
-assert FunkcjaKwadratowa(2,1,2).rozwiaz() == "Brak miejsc zerowych"
+assert FunkcjaKwadratowa(2,1,2).rozwiaz() == "Brak rozwiazan"
 assert FunkcjaKwadratowa(1,2,-3).rozwiaz() == "-3.0, 1.0"
+
+funL = FunkcjaLiniowa(2,5)
+assert str(funL) == "2x + 5"
+assert funL.rozwiaz() == "-2.5"
+
+funL2 = FunkcjaLiniowa(0,3)
+assert funL2.rozwiaz() == "Brak rozwiazan"
+
+funL3 = FunkcjaLiniowa(3,0)
+assert funL3.rozwiaz() == "0.0"
+
+funL4 = FunkcjaLiniowa(0,0)
+assert funL4.rozwiaz() == "∞ rozwiazan"
