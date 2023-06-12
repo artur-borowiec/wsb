@@ -23,6 +23,13 @@ def wypozycz_ksiazke():
     imie = input("Imie: ")
     nazwisko = input("Nazwisko: ")
     data = input("Data: ")
+    # dodaj czytacza
+    czytacz = (numer_czytacza, imie, nazwisko, 1)
+    # lub inkrementuj liczbe jego ksiazek
+    
+def szukaj_ksiazki(tytul):
+    znalezione = [ksiazka for ksiazka in biblioteka if ksiazka[0] == tytul]
+    print(f"Ksiazka znaleziona: {znalezione}")
     
 def zacznij_prace_bibliotekarki():
     opcja = input("Wybrana opcja: ")
@@ -32,6 +39,8 @@ def zacznij_prace_bibliotekarki():
                 dodaj_ksiazke()
             case '2':
                 wypozycz_ksiazke()
+            case '13':
+                szukaj_ksiazki(input("Szukaj tytulu: "))
         opcja = input("Wybrana opcja: ")
 
 wypisz_poczatkowe_info()
