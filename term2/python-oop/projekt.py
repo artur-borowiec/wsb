@@ -1,4 +1,6 @@
 biblioteka = []
+historia = []
+czytacze = []
 
 def wypisz_poczatkowe_info():
     print("Witaj w bibliotece miejskiej w Sosnowcu!\n")
@@ -16,7 +18,11 @@ def dodaj_ksiazke():
     print(f"Stan biblioteki: {biblioteka}")
 
 def wypozycz_ksiazke():
-    print('')
+    tytul_lub_numer = input("Tytuł lub numer indeksu ksiazki: ")
+    numer_czytacza = input("Numer czytacza: ")
+    imie = input("Imie: ")
+    nazwisko = input("Nazwisko: ")
+    data = input("Data: ")
     
 def zacznij_prace_bibliotekarki():
     opcja = input("Wybrana opcja: ")
