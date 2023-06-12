@@ -1,3 +1,5 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
 print("Witaj w bibliotece miejskiej w Sosnowcu!\n")
 print("Wybierz opcje:\n1. dodaj ksiazke")
 print("2. wypozycz ksiazke\n3. oddaj ksiazke")
@@ -14,7 +16,7 @@ def dodaj_ksiazke():
 
 opcja = input("Wybrana opcja: ")
 
-while opcja != 5:
+while opcja != '5':
     match opcja:
         case '1':
             dodaj_ksiazke()
