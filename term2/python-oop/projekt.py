@@ -11,8 +11,7 @@ def wypisz_poczatkowe_info():
     print("4. historia ksiazki\n5. zakoncz")
 
 def dodaj_ksiazke():
-    #TODO: zmienic na najmniejszy dostepny
-    numer = random.randint(0,9999)
+    numer = len(biblioteka)
     tytul = input("Tytul ksiazki: ")
     autor = input("Autor ksiazki: ")
     rok_wydania = input("Rok wydania: ")
@@ -20,7 +19,8 @@ def dodaj_ksiazke():
     ksiazka = (numer, tytul, autor, rok_wydania, 'w bibliotece')
     biblioteka.append(ksiazka)
     print(f"Dodano ksiazke {ksiazka}")
-    print(f"Stan biblioteki: {biblioteka}")
+    bstr = str(biblioteka).replace('), (', '),\n(').replace('[', '[\n').replace(']', '\n]')
+    print(f"Stan biblioteki: {bstr}")
 
 def dodaj_czytacza(czytacz):
     czytacze.append(czytacz)
