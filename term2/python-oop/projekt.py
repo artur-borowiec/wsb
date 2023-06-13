@@ -1,3 +1,5 @@
+import random
+
 biblioteka = []
 historia = []
 czytacze = []
@@ -9,23 +11,36 @@ def wypisz_poczatkowe_info():
     print("4. historia ksiazki\n5. zakoncz")
 
 def dodaj_ksiazke():
+    #TODO: zmienic na najmniejszy dostepny
+    numer = random.randint(0,9999)
     tytul = input("Tytul ksiazki: ")
     autor = input("Autor ksiazki: ")
     rok_wydania = input("Rok wydania: ")
-    ksiazka = (tytul, autor, rok_wydania, 'w bibliotece')
+    
+    ksiazka = (numer, tytul, autor, rok_wydania, 'w bibliotece')
     biblioteka.append(ksiazka)
     print(f"Dodano ksiazke {ksiazka}")
     print(f"Stan biblioteki: {biblioteka}")
 
 def wypozycz_ksiazke():
     tytul_lub_numer = input("Tytuł lub numer indeksu ksiazki: ")
-    numer_czytacza = input("Numer czytacza: ")
-    imie = input("Imie: ")
-    nazwisko = input("Nazwisko: ")
-    data = input("Data: ")
+    #numer_czytacza = input("Numer czytacza: ")
+    #imie = input("Imie: ")
+    #nazwisko = input("Nazwisko: ")
+    #data = input("Data: ")
+    czy_ksiazka_dostepna(tytul_lub_numer)
     # dodaj czytacza
-    czytacz = (numer_czytacza, imie, nazwisko, 1)
+    #czytacz = (numer_czytacza, imie, nazwisko, 1)
     # lub inkrementuj liczbe jego ksiazek
+    
+def czy_ksiazka_dostepna(tytul_lub_numer):
+    try:
+        numer = int(tytul_lub_numer)
+        numery = [ksiazka[0] for ksiazka in biblioteka]
+        print(f"Numer istnieje? {numer in numery}")
+    except ValueError:
+        tytuly = [ksiazka[1] for ksiazka in biblioteka]
+        print(f"Tytul istnieje? {tytul_lub_numer in tytuly}")
     
 def szukaj_ksiazki(tytul):
     znalezione = [ksiazka for ksiazka in biblioteka if ksiazka[0] == tytul]
