@@ -73,5 +73,18 @@ def zacznij_prace_bibliotekarki():
                 wypozycz_ksiazke()
         opcja = input("Wybrana opcja: ")
 
+def utworz_plik(nazwa):
+    try:
+        open(f"{nazwa}", "x")
+        print(f"Utworzono {nazwa}")
+    except:
+        print(f"{nazwa} juz istnieje, pomijam tworzenie")
+
+def sprawdz_pliki():
+    utworz_plik("biblioteka.csv")
+    utworz_plik("historia.csv")
+    utworz_plik("czytacze.csv")
+
+sprawdz_pliki()
 wypisz_poczatkowe_info()
 zacznij_prace_bibliotekarki()
