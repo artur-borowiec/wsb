@@ -8,7 +8,9 @@ historia = []
 status_wypozyczona = 'Nie w bibliotece'
 status_dostepna = 'W bibliotece'
 
-naglowek_biblioteka = "ID, Tytul, Autor, Rok wydania, Status" 
+naglowek_biblioteka = "ID, Tytul, Autor, Rok wydania, Status"
+naglowek_historia = "ID, Numer czytacza, Czy udana, Data wypozyczenia, Data oddania"
+naglowek_czytacze = "Numer czytacza, Imie, Nazwisko, Ilosc ksiazek"
 
 class Ksiazka:
     def __init__(self, id, tytul, autor, rok_wydania, status=status_dostepna):
@@ -108,21 +110,23 @@ class Biblioteka:
     
     def wypozycz_ksiazke(self):
         numer = int(input("Podaj nr ksiazki: "))
-        czytacz = int(input("Podaj nr czytacza: "))
+        nr_czytacza = int(input("Podaj nr czytacza: "))
+        imie = input("Podaj imie czytacza: ")
+        nazwisko = input("Podaj nazwisko czytacza: ")
 
         for k in ksiazki:
             if k.id == numer:
                 if k.status != status_wypozyczona:
                     k.status = status_wypozyczona
-                    czytacze.append(Czytacz(czytacz, 'Imie', 'Nazwisko'))
-                    zmien_ksiazki_czytacza(czytacz, 1)
+                    dodaj_ksiazke_czytacza(nr_czytacza, imie, nazwisko)
                 else:
                     print('Wypozyczenie niemozliwe, ksiazka jest juz wypozyczona!')
         wyswietl_kolekcje(ksiazki, 'Ksiazki')
         wyswietl_kolekcje(czytacze, 'Czytacze')
-        
+
     def oddaj_ksiazke(self):
-        print(f"\n==== Oddawanie jeszcze nie jest zaimplementowane ====")
+        numer = int(input("Podaj nr ksiazki: "))
+        print(len([k for k in ksiazki if k.id==numer]))
     
     def historia_ksiazki(self):
         print(f"\n==== Historia ksiazki jeszcze nie jest zaimplementowana ====")
@@ -134,12 +138,20 @@ def wyswietl_kolekcje(kolekcja, nazwa):
     print(f"==== {nazwa} ====")
     for element in kolekcja:
         print(element)
+    print("===========\n")
         
 def zmien_ksiazki_czytacza(numer, zmiana):
     for cz in czytacze:
         if cz.id == numer:
             cz.ilosc_ksiazek += zmiana
             return
+        
+def dodaj_ksiazke_czytacza(numer_czytacza, imie, nazwisko):
+    istnieje_z_id = any(cz.id == numer_czytacza for cz in czytacze)
+    if istnieje_z_id:
+        zmien_ksiazki_czytacza(numer_czytacza, 1)
+    else:
+        czytacze.append(Czytacz(numer_czytacza, imie, nazwisko, 1))
 
 def wyswietl_wszystkie_kolekcje():
     wyswietl_kolekcje(ksiazki, 'Ksiazki')
