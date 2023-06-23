@@ -54,18 +54,55 @@ class Wypozyczenie:
 class AsystentPlikow:
     def __init__(self):
         pass
-    
-    def __utworz_plik__(self, nazwa):
+            
+    def wczytaj_ksiazki(self):
+        with open('biblioteka.csv', 'r') as plik:
+            lines = plik.readlines()
+            if (len(lines) > 1):
+                lines.pop(0)
+                for line in lines:
+                    id,tytul,autor,rok,status = line.strip().split(',')
+                    ksiazki.append(Ksiazka(id, tytul, autor, rok, status))
+                print(f"Wczytano {len(lines)} ksiazek!")
+            else:
+                print("Brak ksiazek do wczytania!")
+            
+    def wczytaj_czytaczy(self):
+        with open('czytacze.csv', 'r') as plik:
+            lines = plik.readlines()
+            if (len(lines) > 1):
+                lines.pop(0)
+                for line in lines:
+                    id,imie,nazwisko,ilosc = line.strip().split(',')
+                    czytacze.append(Czytacz(id, imie, nazwisko, ilosc))
+                print(f"Wczytano {len(lines)} czytaczy!")
+            else:
+                print("Brak czytaczy do wczytania!")
+            
+    def wczytaj_historia(self):
+        with open('historia.csv', 'r') as plik:
+            lines = plik.readlines()
+            if (len(lines) > 1):
+                lines.pop(0)
+                for line in lines:
+                    id,nr_czytacza,udane,wyp,odd = line.strip().split(',')
+                    historia.append(Wypozyczenie(id, nr_czytacza, udane, wyp, odd))
+                print(f"Wczytano {len(lines)} wypozyczen!")
+            else:
+                print("Brak wypozyczen do wczytania!")
+            
+    def __utworz_plik__(self, nazwa, f_wczytaj):
         try:
             open(f"{nazwa}", "x")
             print(f"Utworzono plik {nazwa}")
         except:
             print(f"{nazwa} juz istnieje, pomijam tworzenie")
+            f_wczytaj()   
     
     def sprawdz_pliki(self):
-        self.__utworz_plik__("biblioteka.csv")
-        self.__utworz_plik__("historia.csv")
-        self.__utworz_plik__("czytacze.csv")
+        self.__utworz_plik__("biblioteka.csv", self.wczytaj_ksiazki)
+        self.__utworz_plik__("historia.csv", self.wczytaj_historia)
+        self.__utworz_plik__("czytacze.csv", self.wczytaj_czytaczy)
         
     def zapisz_dane(self):
         with open('czytacze.csv', 'w') as plik:
@@ -184,18 +221,7 @@ def sprawdz_polskie_znaki(tekst):
             return True
     return False
 
-wyswietl_kolekcje(ksiazki, 'Ksiazki')
-ksiazki.append(Ksiazka(0, "T1", "A1", 2021))
-wyswietl_kolekcje(ksiazki, 'Ksiazki')
-czytacze.append(Czytacz(0, "I1", "N1"))
-czytacze.append(Czytacz(1, "I2", "N1"))
-zmien_ksiazki_czytacza(1, -1)
-wyswietl_kolekcje(czytacze, 'Czytacze')
-historia.append(Wypozyczenie(1, 1, "tak", 21-2-2002, 22-2-2002))
-wyswietl_kolekcje(historia, 'Historia')
-
-wyswietl_wszystkie_kolekcje()
-
 asystent = AsystentPlikow()
 biblioteka = Biblioteka(asystent)
 biblioteka.zacznij_prace()
+wyswietl_wszystkie_kolekcje()
