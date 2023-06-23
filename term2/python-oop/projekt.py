@@ -8,9 +8,9 @@ historia = []
 status_wypozyczona = 'Nie w bibliotece'
 status_dostepna = 'W bibliotece'
 
-naglowek_biblioteka = "ID, Tytul, Autor, Rok wydania, Status"
-naglowek_historia = "ID, Numer czytacza, Czy udana, Data wypozyczenia, Data oddania"
-naglowek_czytacze = "Numer czytacza, Imie, Nazwisko, Ilosc ksiazek"
+naglowek_biblioteka = "ID, Tytul, Autor, Rok wydania, Status\n"
+naglowek_historia = "ID, Numer czytacza, Czy udana, Data wypozyczenia, Data oddania\n"
+naglowek_czytacze = "Numer czytacza, Imie, Nazwisko, Ilosc ksiazek\n"
 
 class Ksiazka:
     def __init__(self, id, tytul, autor, rok_wydania, status=status_dostepna):
@@ -66,6 +66,20 @@ class AsystentPlikow:
         self.__utworz_plik__("biblioteka.csv")
         self.__utworz_plik__("historia.csv")
         self.__utworz_plik__("czytacze.csv")
+        
+    def zapisz_dane(self):
+        with open('czytacze.csv', 'w') as plik:
+            plik.write(naglowek_czytacze)
+            for cz in czytacze:
+                plik.write(f"{cz}\n")
+        with open('historia.csv', 'w') as plik:
+            plik.write(naglowek_historia)
+            for w in historia:
+                plik.write(f"{w}\n")
+        with open('biblioteka.csv', 'w') as plik:
+            plik.write(naglowek_biblioteka)
+            for k in ksiazki:
+                plik.write(f"{k}\n")
     
 class Biblioteka:
     def __init__(self, asystent_plikow):
@@ -90,7 +104,7 @@ class Biblioteka:
                 case '4':
                     self.historia_ksiazki()
                 case '5':
-                    self.zapisz_dane()
+                    self.asystent_plikow.zapisz_dane()
                     return
                 case _:
                     print(f"\n==== Opcja {opcja} niedostepna! ====\n")
@@ -130,9 +144,6 @@ class Biblioteka:
     
     def historia_ksiazki(self):
         print(f"\n==== Historia ksiazki jeszcze nie jest zaimplementowana ====")
-        
-    def zapisz_dane(self):
-        print(f"\n==== Zapisywanie jeszcze nie jest zaimplementowana ====")
 
 def wyswietl_kolekcje(kolekcja, nazwa):
     print(f"==== {nazwa} ====")
