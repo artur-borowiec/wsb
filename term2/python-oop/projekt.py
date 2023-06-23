@@ -5,8 +5,13 @@ ksiazki = []
 czytacze = []
 historia = []
 
+status_wypozyczona = 'Nie w bibliotece'
+status_dostepna = 'W bibliotece'
+
+naglowek_biblioteka = "ID, Tytul, Autor, Rok wydania, Status" 
+
 class Ksiazka:
-    def __init__(self, id, tytul, autor, rok_wydania, status='W bibliotece'):
+    def __init__(self, id, tytul, autor, rok_wydania, status=status_dostepna):
         self.id = id
         self.tytul = tytul
         self.autor = autor
@@ -15,6 +20,13 @@ class Ksiazka:
     
     def __str__(self):
         return f"{self.id},{self.tytul},{self.autor},{self.rok_wydania},{self.status}"
+        
+    def wprowadz(self):
+        self.id = len(ksiazki)
+        self.tytul = wprowadz_wartosc("Podaj tytul ksiazki: ")
+        self.autor = wprowadz_wartosc("Podaj autora ksiazki: ")
+        self.rok_wydania = input("Podaj rok wydania książki: ")
+        self.status = status_dostepna
 
 class Czytacz:
     def __init__(self, id, imie, nazwisko, ilosc_ksiazek=0):
@@ -61,12 +73,63 @@ class Biblioteka:
         print("Witaj w bibliotece miejskiej w Sosnowcu!\n")
         print("Wybierz opcje:\n1. dodaj ksiazke")
         print("2. wypozycz ksiazke\n3. oddaj ksiazke")
-        print("4. historia ksiazki\n5. zakoncz")
+        print("4. historia ksiazki\n5. zakoncz\n")
         
+    def obsluz_opcje(self):
+        opcja = input("Wybrana opcja: ")
+        while True:
+            match opcja:
+                case '1':
+                    self.dodaj_ksiazke()
+                case '2':
+                    self.wypozycz_ksiazke()
+                case '3':
+                    self.oddaj_ksiazke()
+                case '4':
+                    self.historia_ksiazki()
+                case '5':
+                    self.zapisz_dane()
+                    return
+                case _:
+                    print(f"\n==== Opcja {opcja} niedostepna! ====\n")
+            opcja = input("Wybrana opcja: ")
+            
     def zacznij_prace(self):
         self.asystent_plikow.sprawdz_pliki()
         self.wypisz_poczatkowe_info()
+        self.obsluz_opcje()
         
+    def dodaj_ksiazke(self):
+        nowa_ksiazka = Ksiazka("", "", "", "", "")
+        nowa_ksiazka.wprowadz()
+        ksiazki.append(nowa_ksiazka)
+        print(f"\n==== Wprowadzono ksiazke {nowa_ksiazka}! ====")
+        wyswietl_kolekcje(ksiazki, 'Ksiazki')
+    
+    def wypozycz_ksiazke(self):
+        numer = int(input("Podaj nr ksiazki: "))
+        czytacz = int(input("Podaj nr czytacza: "))
+
+        for k in ksiazki:
+            if k.id == numer:
+                if k.status != status_wypozyczona:
+                    k.status = status_wypozyczona
+                    czytacze.append(Czytacz(czytacz, 'Imie', 'Nazwisko'))
+                    zmien_ksiazki_czytacza(czytacz, 1)
+                else:
+                    print('Wypozyczenie niemozliwe, ksiazka jest juz wypozyczona!')
+        wyswietl_kolekcje(ksiazki, 'Ksiazki')
+        wyswietl_kolekcje(czytacze, 'Czytacze')
+        
+    def oddaj_ksiazke(self):
+        print(f"\n==== Oddawanie jeszcze nie jest zaimplementowane ====")
+    
+    def historia_ksiazki(self):
+        print(f"\n==== Historia ksiazki jeszcze nie jest zaimplementowana ====")
+        
+    def zapisz_dane(self):
+        print(f"\n==== Zapisywanie jeszcze nie jest zaimplementowana ====")
+
 def wyswietl_kolekcje(kolekcja, nazwa):
     print(f"==== {nazwa} ====")
     for element in kolekcja:
@@ -76,18 +139,34 @@ def zmien_ksiazki_czytacza(numer, zmiana):
     for cz in czytacze:
         if cz.id == numer:
             cz.ilosc_ksiazek += zmiana
+            return
 
 def wyswietl_wszystkie_kolekcje():
     wyswietl_kolekcje(ksiazki, 'Ksiazki')
     wyswietl_kolekcje(czytacze, 'Czytacze')
     wyswietl_kolekcje(historia, 'Wypozyczenia')
+    
+def wprowadz_wartosc(komunikat):
+    while True:
+        wartosc = input(komunikat)
+        if not sprawdz_polskie_znaki(wartosc):
+            return wartosc
+        else:
+            print("Wprowadzono tekst z polskimi znakami, ktore nie sa dozwolone. Prosze sprobowac ponownie.")
+
+def sprawdz_polskie_znaki(tekst):
+    polskie_znaki = ['ą', 'ć', 'ę', 'ł', 'ń', 'ó', 'ś', 'ź', 'ż']
+    for znak in polskie_znaki:
+        if znak in tekst:
+            return True
+    return False
 
 wyswietl_kolekcje(ksiazki, 'Ksiazki')
-ksiazki.append(Ksiazka(1, "T1", "A1", 2021))
+ksiazki.append(Ksiazka(0, "T1", "A1", 2021))
 wyswietl_kolekcje(ksiazki, 'Ksiazki')
-czytacze.append(Czytacz(1, "I1", "N1"))
-czytacze.append(Czytacz(2, "I2", "N1"))
-zmien_ksiazki_czytacza(2, -1)
+czytacze.append(Czytacz(0, "I1", "N1"))
+czytacze.append(Czytacz(1, "I2", "N1"))
+zmien_ksiazki_czytacza(1, -1)
 wyswietl_kolekcje(czytacze, 'Czytacze')
 historia.append(Wypozyczenie(1, 1, "tak", 21-2-2002, 22-2-2002))
 wyswietl_kolekcje(historia, 'Historia')
