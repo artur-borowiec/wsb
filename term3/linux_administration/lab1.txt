@@ -1,3 +1,5 @@
+https://regexone.com/
+
 Lesson 1: An Introduction, and the ABCs
 abc
 
@@ -45,3 +47,13 @@ I love (cats|dogs)
 
 Lesson 15: Other special characters
 \.$
+
+Problem 1: Matching a decimal numbers
+^-?\d+(,\d+)*(\.\d+(e\d+)?)?$
+
+Problem 2: Matching phone numbers
+1?[\s-]?\(?(\d{3})\)?[\s-]?\d{3}[\s-]?\d{4}
+
+Problem 3: Matching emails
+TODO:
+(.*)@[a-z]+(.[a-z]+)+
