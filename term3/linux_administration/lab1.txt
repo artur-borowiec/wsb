@@ -1,2 +1,47 @@
-Exercise 1: Matching Characters
+Lesson 1: An Introduction, and the ABCs
 abc
+
+Lesson 1½: The 123s
+123
+
+Lesson 2: The Dot
+\.
+
+Lesson 3: Matching specific characters
+[cmf]an
+
+Lesson 4: Excluding specific characters
+[^b]og
+
+Lesson 5: Character ranges
+[A-C]
+
+Lesson 6: Catching some zzz's
+[z]{3}
+
+Lesson 7: Mr. Kleene, Mr. Kleene
+(aa)+
+
+Lesson 8: Characters optional
+found\?
+
+Lesson 9: All this whitespace
+\.\s
+
+Lesson 10: Starting and ending
+^Mission
+
+Lesson 11: Match groups
+(.*).pdf$
+
+Lesson 12: Nested groups
+([A-z]{3} (\d{4}))
+
+Lesson 13: More group work
+(\d+)x(\d+)
+
+Lesson 14: It's all conditional
+I love (cats|dogs)
+
+Lesson 15: Other special characters
+\.$
