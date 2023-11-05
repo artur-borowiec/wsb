@@ -13,6 +13,7 @@ fun toASCII(input: Char): Int {
     return output
 }
 
+//TODO: replace toBinaryString with manual operation 
 fun String.toBinary() =
     toASCII(this).map { Integer.toBinaryString(it) }.joinToString("")
 	
