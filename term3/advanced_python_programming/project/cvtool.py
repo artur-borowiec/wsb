@@ -19,4 +19,4 @@ def cities_from_image(filename):
 def number_plate_from_image(filename):
     reader = easyocr.Reader(['en'])
     result = reader.readtext(filename)
-    return result
+    return result[1][1]
