@@ -11,9 +11,11 @@ def country_from_file(filename):
 
 
 def cities_from_image(filename):
-    img = cv2.imread(filename)
-    result = pytesseract.image_to_string(img).strip().split('\n')
-    return list(filter(len, result))
+    reader = easyocr.Reader(['en'])
+    result = reader.readtext(filename)
+    cities = [item[1] for item in result]
+
+    return cities
 
 
 def number_plate_from_image(filename):

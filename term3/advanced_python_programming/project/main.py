@@ -15,10 +15,10 @@ import shopping
 # country_info.run()
 
 # task4: qr
-qr.run()
+# qr.run()
 
 # task5: map_info
-# map_info.run()
+map_info.run()
 
 # task8: prescription
 # prescription.run()
