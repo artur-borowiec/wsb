@@ -3,7 +3,7 @@ import cvtool
 
 
 def run():
-    cities = cvtool.cities_from_image("map.png")
+    cities = cvtool.cities_from_image("images/map.png")
 
     for city in cities:
         response = api.city_by_name(city)
