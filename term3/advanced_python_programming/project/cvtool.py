@@ -39,3 +39,10 @@ def prescription_from_image(filename):
     labels = [item[1] for item in result]
 
     return labels
+
+def animals_from_image(filename):
+    reader = easyocr.Reader(['en'])
+    result = reader.readtext(filename)
+    labels = [item[1] for item in result]
+
+    return labels

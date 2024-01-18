@@ -1,5 +1,4 @@
-import api
-import cvtool
+import animals
 import country_info
 import qr
 import map_info
@@ -18,12 +17,15 @@ import shopping
 # qr.run()
 
 # task5: map_info
-map_info.run()
+# map_info.run()
 
 # task8: prescription
 # prescription.run()
 
 # task9: shopping_list
 # shopping.run()
+
+# task10: animals
+animals.run()
 
 exit()
