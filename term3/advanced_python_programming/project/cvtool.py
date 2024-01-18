@@ -20,3 +20,12 @@ def number_plate_from_image(filename):
     reader = easyocr.Reader(['en'])
     result = reader.readtext(filename)
     return result[1][1]
+
+
+def shopping_list_from_image(filename):
+    reader = easyocr.Reader(['en'])
+    result = reader.readtext(filename)
+    labels = [item[1] for item in result]
+    pairs = [(labels[i], labels[i + 1]) for i in range(0, len(labels) - 1, 2)]
+
+    return pairs
