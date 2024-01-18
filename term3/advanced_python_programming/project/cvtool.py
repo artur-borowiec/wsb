@@ -29,3 +29,11 @@ def shopping_list_from_image(filename):
     pairs = [(labels[i], labels[i + 1]) for i in range(0, len(labels) - 1, 2)]
 
     return pairs
+
+
+def prescription_from_image(filename):
+    reader = easyocr.Reader(['pl'])
+    result = reader.readtext(filename)
+    labels = [item[1] for item in result]
+
+    return labels

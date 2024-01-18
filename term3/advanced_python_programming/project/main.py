@@ -3,6 +3,7 @@ import cvtool
 import country_info
 import map_info
 import number_plates
+import prescription
 import shopping
 
 # task2: number_plates
@@ -14,7 +15,10 @@ import shopping
 # task5: map_info
 # map_info.run()
 
+# task8: prescription
+prescription.run()
+
 # task9: shopping_list
-shopping.run()
+# shopping.run()
 
 exit()
