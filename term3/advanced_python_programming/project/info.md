@@ -22,3 +22,37 @@ i wyświetla informacje zawarte w kodzie.
 zawierającego fragment mapy, a następnie wyświetla
 współrzędne geograficzne i nazwy miejscowości
 znajdujących się na mapie.
+
+6. Napisz program, który odczytuje tekst z obrazu
+zawierającego tytuł i fragment artykułu prasowego, a
+następnie podsumowuje treść artykułu i wyświetla źródło i
+datę publikacji.
+
+7. Napisz program, który odczytuje tekst z obrazu
+zawierającego nazwisko i podpis osoby sławnej, a następnie
+sprawdza, czy podpis jest autentyczny i należy do tej osoby.
+
+8. Napisz program, który odczytuje tekst z obrazu
+zawierającego receptę lekarską, a następnie wyświetla
+informacje o lekach przepisanych przez lekarza, takie jak
+nazwa, dawka, sposób podania itp.
+
+9. Napisz program, który odczytuje tekst z obrazu
+zawierającego listę zakupów, a następnie oblicza łączną
+cenę produktów i wyświetla ją na wykresie kołowym.
+
+10. Napisz program, który odczytuje tekst z obrazu
+zawierającego nazwy i zdjęcia zwierząt, a następnie
+klasyfikuje zwierzęta według ich gatunku i wyświetla je na
+wykresie słupkowym.
+
+11. Stwórz prostą aplikację bloga, która pozwala
+użytkownikom na tworzenie, edycję oraz komentowanie
+postów innych użytkowników
+
+12. Stwórz aplikację ankiety, która pozwala użytkownikom
+tworzyć, odpowiadać i przeglądać wyniki ankiet
+
+13. Stwórz prostą aplikację sklepu internetowego, która pozwala
+użytkownikom przeglądać, dodawać do koszyka, kupować
+produkty oraz zarządzać zamówieniami i płatnościami
