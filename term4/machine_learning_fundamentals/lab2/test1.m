@@ -11,6 +11,7 @@ T = [ 1 0 0 ; % ssak
 
 Wprzed = init1 ( 5 , 3 )
 Yprzed = dzialaj1 ( Wprzed , P )
-% Wpo = ucz1 ( Wprzed , P , T , 100 )
-% Ypo = dzialaj1 ( Wpo , P )
+
+Wpo = ucz1 ( Wprzed , P , T , 100 )
+Ypo = dzialaj1 ( Wpo , P )
 
