@@ -10,3 +10,15 @@ This script tests the OpenWeatherMap API for specific city weather conditions us
 First, ensure you have Python installed on your system. Then, install the `requests` library using pip:
 ```bash
 pip install requests
+```
+
+## Using Makefile
+
+1. Install the dependencies:
+    ```bash
+    make install
+    ```
+2. Run the script:
+    ```bash
+    make run
+    ```
