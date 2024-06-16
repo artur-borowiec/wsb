@@ -11,9 +11,10 @@ def test_weather_in_city(name):
 
     response = requests.get(endpoint, params=params)
 
-    assert response.status_code == 200
-    assert response.json()['name'] == name
-    assert response.json()['visibility'] > 0
+    assert response.status_code == 200, 'Wrong response code'
+    assert response.json()['name'] == name, 'Name does not match'
+    assert response.json()['visibility'] > 0, 'Visibility invalid'
+    print('Test for ' + name + ' passed!')
 
 
 test_weather_in_city('Warsaw')
