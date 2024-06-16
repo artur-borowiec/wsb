@@ -2,7 +2,7 @@ import requests
 
 
 def test_weather_in_city(name):
-    endpoint = 'http://api.openweathermap.org/data/2.5/weather'
+    endpoint = 'https://api.openweathermap.org/data/2.5/weather'
     params = {
         'q': name,
         'appid': '23fc47171f1bb26ec537d9bf1a271313',
@@ -10,10 +10,12 @@ def test_weather_in_city(name):
     }
 
     response = requests.get(endpoint, params=params)
+    json = response.json()
 
     assert response.status_code == 200, 'Wrong response code'
-    assert response.json()['name'] == name, 'Name does not match'
-    assert response.json()['visibility'] > 0, 'Visibility invalid'
+    assert json['name'] == name, 'Name does not match'
+    assert json['visibility'] > 0, 'Visibility invalid'
+    assert json['sys']['sunset'] > json['sys']['sunrise'], 'Sun time does not match'
     print('Test for ' + name + ' passed!')
 
 
